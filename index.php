@@ -16,7 +16,7 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target=".navbar-collapse">
+                        data-target=".navbar-collapse" data-aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -59,7 +59,7 @@
                 <p>Software Online Repository</p>
                 <p>© 2018  All rights reserved</p>
             </div>
-            <div class="col-md-4 footer-nav">
+            <div class="col-md-3 footer-nav">
                 <ul class="list">
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact</a></li>
@@ -67,7 +67,7 @@
                     <li><a href="#">Privacy Policy</a></li>
                 </ul>
             </div>
-            <div class="col-md-2 footer-nav">
+            <div class="col-md-3 footer-nav">
                 <h4>Support</h4>
                 <ul class="list">
                     <li><a href="#">Help</a></li>
