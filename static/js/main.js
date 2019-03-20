@@ -15,5 +15,16 @@ $('document').ready(function(){
         }
     })
 
+    $('.navbar-toggle').on('click', function (e) {
+
+        if($(e.currentTarget).data('aria-expanded')==true){
+            $(e.currentTarget).data('aria-expanded', false);
+            $($(e.currentTarget).data('target')).find('li.option').hide();
+        }else{
+            $(e.currentTarget).data('aria-expanded', true);
+            $($(e.currentTarget).data('target')).find('li.option').show();
+        }
+    })
+
     //end menu actions
 });
