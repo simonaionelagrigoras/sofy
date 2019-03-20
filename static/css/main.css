@@ -52,7 +52,20 @@ button, input, select, textarea {
     display: table;
     content: " ";
 }
-
+.container.my-account {
+    /*background-color: transparent;*/
+   /* display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-start;*/
+}
+.container.my-account .content {
+    display: flex;
+    width: 100%;
+}
+.container.my-account .col-sm-9{
+    background-color: #fff;
+}
 .navbar::after{
     clear: both;
 }
@@ -199,13 +212,33 @@ a {
 .open.dropdown-menu {
     display: block;
 }
+/*.sidebar-nav, .navbar.navbar-default.account{*/
+.navbar.navbar-default.account{
+    background: transparent;
+    border: none;
+}
+#account-navigation{
+    border-color: #e7e7e7;
+    background: #f8f8f8;
+    color: #333;
+}
 
+.navbar-nav.account>li>a {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    line-height: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #333;
+}
 .footer {
     background-color: #3c3d41;
     padding: 60px 40px;
     color: rgba(255,255,255,1.00);
     margin-bottom: 20px;
-    margin-top: 50%;
+    margin-top: 25%;
     border-bottom-right-radius: 6px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 6px;
@@ -334,6 +367,35 @@ a {
     .footer {
         padding: 20px 10px;
         margin-bottom: 0px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+    }
+
+    .sidebar-nav .navbar li a {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .nav.navbar-nav.account{
+        float: none;
+    }
+
+    .col-sm-3,
+    .col-sm-9 {
+        float: left;
+    }
+
+    .col-sm-9 {
+        width: 75%;
+    }
+
+    .col-sm-3 {
+        width: 25%;
     }
 }
 @media (min-width: 994px){
