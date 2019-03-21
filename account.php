@@ -14,7 +14,6 @@
 
 <div class="container  my-account">
     <div class="content">
-<!--        <div class="row">-->
             <div class="col-sm-3" id="account-navigation">
                 <div class="sidebar-nav">
                     <div class="navbar navbar-default account" role="navigation">
@@ -25,13 +24,13 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <span class="visible-xs navbar-brand">Sidebar menu</span>
+                            <span class="visible-xs navbar-brand">My Account</span>
                         </div>
                         <div class="navbar-collapse collapse sidebar-navbar-collapse">
                             <ul class="nav navbar-nav account">
                                 <li class="active"><a href="#">Profile</a></li>
-                                <li><a href="#">Statistics</a></li>
-                                <li><a href="#">Account details</a></li>
+                                <li><a href="#">My Repositories</a></li>
+                                <li><a href="#">Account settings</a></li>
                                 <li><a href="#">Messages <span class="badge">2</span></a></li>
                             </ul>
                         </div><!--/.nav-collapse -->
@@ -39,14 +38,13 @@
                 </div>
             </div>
             <div class="col-sm-9">
-                <h3>User name</h3>
+                <h3>John</h3>
                 <div class="profile-photo">
-                    <img src="media/images/profile.jpg" width="100">
+                    <img src="static/media/images/profile.jpg" width="100">
                 </div>
-                <p><strong>Score:</strong> 63</p>
-                <p><strong>Level:</strong> Begginer</p>
+                <p><strong>Repositories updates:</strong> 3</p>
+                <p><strong>Content size:</strong> 464 KB</p>
             </div>
-<!--        </div>-->
 
     </div>
     <?php require_once (getDir('page\html\footer.php'))?>
