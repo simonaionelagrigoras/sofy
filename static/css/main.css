@@ -62,7 +62,6 @@ button, input, select, textarea {
 .container.my-account .col-sm-9{
     background-color: #fff;
     padding-left: 25px;
-    margin-left: 5px;
 }
 .navbar::after{
     clear: both;
@@ -135,7 +134,22 @@ a {
     background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
+}
+#account-navigation .navbar-toggle{
+    float: right;
+}
+#account-navigation .navbar-brand {
+    color: #333;
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 600;
+}
 
+#account-navigation .navbar-toggle .icon-bar{
+    background-color: #333;
 }
 #user-account:after {
     content: "";
@@ -409,16 +423,9 @@ a {
     .col-sm-3,
     .col-sm-9 {
         float: left;
-    }
-
-    .col-sm-9 {
         width: 100%;
+        margin-left: 0;
     }
-
-    .col-sm-3 {
-        width: 100%;
-    }
-
 
     /*---*/
     .navbar .navbar-nav {
@@ -484,9 +491,6 @@ a {
     .col-sm-9 {
         float: left;
     }
-}
-
-@media (min-width: 650px){
 
     .col-sm-3 {
         width: 24%;
@@ -494,13 +498,13 @@ a {
 
     .col-sm-9 {
         width: 75%;
+        margin-left: 1%;
     }
 
     .navbar.navbar-default.account .navbar-toggle,
     .navbar.navbar-default.account .navbar-brand{
         display: none;
     }
-
 }
 
 @media (max-width: 600px){
@@ -516,6 +520,11 @@ a {
     .footer {
         padding: 10px 20px;
         margin-bottom: 0px;
+        margin-top: 40%;
+    }
+
+    .navbar-nav.account li {
+        display: none;
     }
 }
 
