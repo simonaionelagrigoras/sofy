@@ -10,10 +10,10 @@
     <?php require_once('settings.php');?>
 </head>
 <body>
-<?php require_once (getDir('page\html\header.php'))?>
+    <?php require_once (getDir('page\html\header.php'))?>
 
-<div class="container  my-account">
-    <div class="content">
+    <div class="container About us">
+            <div class="content">
             <div class="col-sm-3" id="account-navigation">
                 <div class="sidebar-nav">
                     <div class="navbar navbar-default account" role="navigation">
@@ -38,16 +38,45 @@
                 </div>
             </div>
             <div class="col-sm-9">
-                <h3>John</h3>
-                <div class="profile-photo">
-                    <img src="static/media/images/profile.jpg" width="100">
-                </div>
-                <p><strong>Repositories updates:</strong> 3</p>
-                <p><strong>Content size:</strong> 464 KB</p>
-            </div>
+        <?php require_once (getDir('page\html\footer.php'))?>
+        <h3> Contact </h3>
+       <h3>Programare Web, Facultatea de Informatica Iasi, UAIC</h3>
+    <a href="http://www.uaic.ro/studii/facultati-2/facultatea-de-informatica/">
+        <h3>Contact Facultatea de Informatica Iasi</h3>
+    </a>
+    <br></br>
+    <h4>Motas David</h4>
+<img src="https://i.imgur.com/Kn823Pr.jpg" style="width: 320px; height:320">
+<br></br>
+<p><em>Email: motasdavid9@gmail.com</em></p>
+<p><em> Phone: 0757670379</em></p>
+<h4>Grigoras Simona</h4>
+<img src="https://i.imgur.com/JJXgBKy.jpg" style="width: 320px; height:420px; ">
+<br></br>
+<p><em>Email: simona.ionela.grigoras@gmail.com</em></p>
+<br></br>
+<h4>Grigoras Marian</h4>
+<br></br>
+<h3>Map</h3>
+<div id="googleMap" style="width:100%;height:400px;"></div>
+<script>
+function myMap() {
+var mapProp= {
+    center:new google.maps.LatLng(47.151726,27.587914),
+    zoom:13,
+};
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+
+<button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">
+Click me to display Date and Time.</button>
+
+<p id="demo"></p>
     </div>
-    <?php require_once (getDir('page\html\footer.php'))?>
-</div>
+    
 </body>
 </html>
