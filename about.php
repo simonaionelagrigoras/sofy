@@ -10,42 +10,32 @@
     <?php require_once('settings.php');?>
 </head>
 <body>
-    <?php require_once (getDir('page\html\header.php'))?>
+<?php require_once (getDir('page\html\header.php'))?>
 
-    <div class="container About us">
-            <div class="content">
-            <div class="col-sm-3" id="account-navigation">
-                <div class="sidebar-nav">
-                    <div class="navbar navbar-default account" role="navigation">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <span class="visible-xs navbar-brand">My Account</span>
-                        </div>
-                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                            <ul class="nav navbar-nav account">
-                                <li class="active"><a href="#">Profile</a></li>
-                                <li><a href="#">My Repositories</a></li>
-                                <li><a href="#">Account settings</a></li>
-                                <li><a href="#">Messages <span class="badge">2</span></a></li>
-                            </ul>
-                        </div><!--/.nav-collapse -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-9">
-        <?php require_once (getDir('page\html\footer.php'))?>
-        <h3> About us </h3>
-        <h4>The project was developed by a team of 3 members:</h4>
-       <h5><em>Grigoras Simona</em></h5>
-       <h5><em>Grigoras Marian</em></h5>
-       <h5><em>Motas David</em></h5>
-       <h4>More information about the application</h4>
-       <p> We have developed a web application that manages a software repository. These can be transferred by 'upload' by authenticated users. The uploaded applications can be grouped according to various criteria (such as the hardware platform, the operating system, the license type, the functionalities offered (eg, the utility suite, the office suite, the Internet tool) etc. or based on content tags The system will allow you to add additional information for each uploaded application, such as description, official website, version history, update frequency, etc. The upload date, number of downloads, size, other similar applications will be displayed. a profile where it will be able to view all the applications loaded by it. The system will also provide a user-level or administrator-level management interface, the generated reports being available in HTML, CSV and PDF formats</p>
+<div class="container about-us">
+    <div class="content">
+        <div class="col-md-12">
+            <h2 class="about-title"><strong>Sofy</strong> - an Online Software Repository</h2>
+            <h4>The project was developed by a team of 3 members:</h4>
+            <h5><em>Grigoras Simona</em></h5>
+            <h5><em>Grigoras Marian</em></h5>
+            <h5><em>Motas David</em></h5>
+            <h4>More information about the application</h4>
+            <p> We have developed a web application that manages a software repository.
+                These can be transferred via 'upload' by authenticated users.</p>
+            <p>The uploaded applications can be grouped according to various criteria
+                (such as the hardware platform, the operating system, the license type, the functionalities offered
+                (eg, the utility suite, the office suite, the Internet tool) etc. or based on content tags.</p>
+            <p>The system will allow you to add additional information for each uploaded application, such as description, official website, version history, update frequency, etc.
+                The upload date, number of downloads, size, other similar applications will be displayed.</p>
+            <p>A profile where it will be able to view all the applications loaded by it.
+                The system will also provide a user-level or administrator-level management interface,
+                the generated reports being available in HTML, CSV and PDF formats</p>
+
+            <a href="https://twitter.com/RepositorySofy?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @RepositorySofy</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
     </div>
+    <?php require_once (getDir('page\html\footer.php'))?>
 </body>
 </html>
