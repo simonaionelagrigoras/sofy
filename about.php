@@ -10,10 +10,10 @@
     <?php require_once('settings.php');?>
 </head>
 <body>
-<?php require_once (getDir('page\html\header.php'))?>
+    <?php require_once (getDir('page\html\header.php'))?>
 
-<div class="container  my-account">
-    <div class="content">
+    <div class="container About us">
+            <div class="content">
             <div class="col-sm-3" id="account-navigation">
                 <div class="sidebar-nav">
                     <div class="navbar navbar-default account" role="navigation">
@@ -38,16 +38,14 @@
                 </div>
             </div>
             <div class="col-sm-9">
-                <h3>John</h3>
-                <div class="profile-photo">
-                    <img src="static/media/images/profile.jpg" width="100">
-                </div>
-                <p><strong>Repositories updates:</strong> 3</p>
-                <p><strong>Content size:</strong> 464 KB</p>
-            </div>
-
+        <?php require_once (getDir('page\html\footer.php'))?>
+        <h3> About us </h3>
+        <h4>The project was developed by a team of 3 members:</h4>
+       <h5><em>Grigoras Simona</em></h5>
+       <h5><em>Grigoras Marian</em></h5>
+       <h5><em>Motas David</em></h5>
+       <h4>More information about the application</h4>
+       <p> We have developed a web application that manages a software repository. These can be transferred by 'upload' by authenticated users. The uploaded applications can be grouped according to various criteria (such as the hardware platform, the operating system, the license type, the functionalities offered (eg, the utility suite, the office suite, the Internet tool) etc. or based on content tags The system will allow you to add additional information for each uploaded application, such as description, official website, version history, update frequency, etc. The upload date, number of downloads, size, other similar applications will be displayed. a profile where it will be able to view all the applications loaded by it. The system will also provide a user-level or administrator-level management interface, the generated reports being available in HTML, CSV and PDF formats</p>
     </div>
-    <?php require_once (getDir('page\html\footer.php'))?>
-</div>
 </body>
 </html>
