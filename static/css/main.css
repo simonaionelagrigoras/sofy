@@ -315,6 +315,9 @@ a {
     margin-bottom:10px;
     color: #3FB721;
 }
+.logo-footer{
+    width: 100px;
+}
 
 .footer .footer-nav ul.list { list-style:none; padding:0px; }
 .footer .footer-nav ul.list li { padding:5px 0px;}
