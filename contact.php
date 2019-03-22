@@ -30,7 +30,6 @@
             <br />
         </div>
         <div class="col-sm-6">
-            <h3>Map</h3>
             <div class="mapouter">
                 <div class="gmap_canvas">
                     <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=facultatea%20informatica%20iasi&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
