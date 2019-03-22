@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="row">
         <div class="col-md-3 footer-brand">
-            <img class="logo-footer" src="/tw/sofy/static/media/images/logo.png"
+            <img class="logo-footer" src="/tw/sofy/static/media/images/logo.png" />
 
             <p>Software Online Repository</p>
             <p>© 2018  All rights reserved</p>
