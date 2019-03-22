@@ -15,7 +15,6 @@
 <div class="container contact">
     <div class="content">
         <div class="contact-container">
-            <h3> Contact </h3>
             <div class="col-sm-6">
                 <h3>Programare Web, Facultatea de Informatica Iasi, UAIC</h3>
                 <a href="http://www.uaic.ro/studii/facultati-2/facultatea-de-informatica/">
@@ -39,8 +38,6 @@
                     <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
                 </div>
 
-                <button type="button" onclick="document.getElementById('demo').innerHTML = Date()">Click me to display Date and Time.</button>
-                <p id="demo"></p>
             </div>
         </div>
 
