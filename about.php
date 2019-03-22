@@ -18,8 +18,14 @@
             <h2 class="about-title"><strong>Sofy</strong> - an Online Software Repository</h2>
             <h4>The project was developed by a team of 3 members:</h4>
             <h5><em>Grigoras Simona</em></h5>
+            <img src="https://i.imgur.com/JJXgBKy.jpg">
+            <h6><em>E-mail: simona.ionela.grigoras@gmail.com</em></h6>
             <h5><em>Grigoras Marian</em></h5>
+            <img src="https://cdn.pixabay.com/photo/2016/01/19/14/55/bunny-1149060__340.jpg">
+            <h6><em>E-mail: grigorasmaring@gmail.com</em></h6>
             <h5><em>Motas David</em></h5>
+            <img src="https://i.imgur.com/Kn823Pr.jpg">
+            <h6><em>E-mail: motasdavid9@gmail.com</em></h6>
             <h4>More information about the application</h4>
             <p> We have developed a web application that manages a software repository.
                 These can be transferred via 'upload' by authenticated users.</p>

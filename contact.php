@@ -20,19 +20,14 @@
             <a href="http://www.uaic.ro/studii/facultati-2/facultatea-de-informatica/">
                 <h3>Contact Facultatea de Informatica Iasi</h3>
             </a>
-            <br>
+            <br />
             <h4>Motas David</h4>
-            <img src="https://i.imgur.com/Kn823Pr.jpg">
-            <br>
-            <p><em>Email: motasdavid9@gmail.com</em></p>
-            <p><em>Phone: 0757670379</em></p>
+
+            <br />
             <h4>Grigoras Simona</h4>
-            <img src="https://i.imgur.com/JJXgBKy.jpg">
-            <br>
-            <p><em>Email: simona.ionela.grigoras@gmail.com</em></p>
-            <br>
+            <br />
             <h4>Grigoras Marian</h4>
-            <br>
+            <br />
         </div>
         <div class="col-sm-6">
             <h3>Map</h3>
