@@ -15,9 +15,12 @@
     <div class="container">
         <div class="content">
 			<form action="/action_page.php" method="get">
-				Name: <input type="text" name="fname"><br>
-				Password: <input type="password" name="pass"><br>
-				<input type="submit" value="Login">
+				<label for="email">Email:</label>
+				<input type="text" id="email" name="email"><br>
+				<label for="pass">Password:</label>
+				<input type="password" id="pass" name="password"
+				minlength="8" required><br>
+				<button type="submit">Login</button>
 			</form>
         </div>
         <?php require_once (getDir('page\html\footer.php'))?>
