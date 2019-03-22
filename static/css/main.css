@@ -47,6 +47,10 @@ button, input, select, textarea {
     border-bottom-left-radius: 8px;
 }
 
+.container.contact .col-sm-6 img{
+    width: 100px;
+    height:auto;
+}
 .container::before, .navbar::before{
     display: table;
     content: " ";
