@@ -42,16 +42,17 @@
             </div>
             <div class="col-sm-6">
                 <h3>Login with existing account:</h3>
-                <form action="/action_page.php" method="post">
-                  <label for="email">Email address</label>
-                  <input type="text" class="form-control" placeholder="Email address" name="email">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" placeholder="Password" name="password"
-                       minlength="8" required>
-                  <input type="submit" class="btn btn-md" value="Sign Up">
-                </form>
-          </div>
+				<form action="/action_page.php" method="post">
+					<label for="email">Email address</label>
+					<input type="text" class="form-control" placeholder="Email address" name="email">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" placeholder="Password" name="password"
+						   minlength="8" required>
+					<input type="submit" class="btn btn-md" value="Sign Up">
+				</form>
 		   </div>
+        </div>
+
         <?php require_once (getDir('page\html\footer.php'))?>
     </div>
 </body>
