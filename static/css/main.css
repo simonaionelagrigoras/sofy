@@ -54,6 +54,15 @@ button, input, select, textarea {
 .about-title{
     text-align: center;
 }
+.about-members{
+    display: table;
+    width: 100%;
+    text-align: center;
+}
+.member-photo{
+    text-align: center;
+    min-height: 150px;
+}
 .container::before, .navbar::before{
     display: table;
     content: " ";
@@ -291,7 +300,7 @@ a {
 }
 .col-md-12{
     width: 100%;
-    padding: 10px;
+    padding: 20px;
 }
 .footer {
     background-color: #3c3d41;
