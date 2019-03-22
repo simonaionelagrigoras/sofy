@@ -47,6 +47,10 @@ button, input, select, textarea {
     border-bottom-left-radius: 8px;
 }
 
+.about-title{
+    text-align: center;
+}
+
 .container.about-us .col-sm-6 img{
     width: 100px;
     height:auto;
