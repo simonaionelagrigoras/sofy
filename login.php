@@ -14,14 +14,30 @@
 
     <div class="container">
         <div class="content">
-			<form action="/action_page.php" method="get">
-				<label for="email">Email:</label>
-				<input type="text" id="email" name="email"><br>
-				<label for="pass">Password:</label>
-				<input type="password" id="pass" name="password"
-				minlength="8" required><br>
-				<button type="submit">Login</button>
-			</form>
+			<table>
+				<tr>
+					<td>
+						<form action="/action_page.php" method="get">
+							<label for="email">Email:</label>
+							<input type="text" id="email" name="email"><br>
+							<label for="pass">Password:</label>
+							<input type="password" id="pass" name="password"
+							minlength="8" required><br>
+							<button type="submit">Login</button>
+						</form>
+					</td>
+					<td>
+						<form action="/action_page.php" method="get">
+							<label for="email">Email:</label>
+							<input type="text" id="email" name="email"><br>
+							<label for="pass">Password:</label>
+							<input type="password" id="pass" name="password"
+							minlength="8" required><br>
+							<button type="submit">Login</button>
+						</form>
+					</td>
+				<tr>
+			</table>
         </div>
         <?php require_once (getDir('page\html\footer.php'))?>
     </div>
