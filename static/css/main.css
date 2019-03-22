@@ -114,6 +114,7 @@ a {
     font-size: 18px;
     line-height: 20px;
     color: #3FB721;
+    padding-left: 35px;
 }
 .navbar-nav>li a:hover {
     color: #4FF925;
@@ -146,7 +147,18 @@ a {
 .navbar .navbar-collapse{
     border-color: #101010;
 }
-.navbar-toggle {
+.header-logo:before{
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-image: url(../media/images/logo.png);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    top: 10px;
+    position: absolute;
+    display: inline-block;
+}
+.navbar-toggle, .account-navbar-toggle {
     position: relative;
     float: left;
     padding: 9px 10px;
@@ -158,7 +170,7 @@ a {
     border: 1px solid transparent;
     border-radius: 4px;
 }
-#account-navigation .navbar-toggle{
+#account-navigation .account-navbar-toggle{
     float: right;
 }
 #account-navigation .navbar-brand {
@@ -171,7 +183,7 @@ a {
     font-weight: 600;
 }
 
-#account-navigation .navbar-toggle .icon-bar{
+#account-navigation .account-navbar-toggle .icon-bar{
     background-color: #333;
 }
 #user-account:after {
@@ -187,14 +199,14 @@ a {
     display: inline-block;
 }
 
-.navbar-toggle .icon-bar {
+.navbar-toggle .icon-bar, .account-navbar-toggle .icon-bar {
     display: block;
     width: 22px;
     height: 2px;
     border-radius: 1px;
     background-color: #fff;
 }
-.navbar-toggle .icon-bar+.icon-bar {
+.navbar-toggle .icon-bar+.icon-bar, .account-navbar-toggle .icon-bar+.icon-bar {
     margin-top: 4px;
 }
 .sr-only {
@@ -513,7 +525,7 @@ label {
     .col-md-2, .col-md-3, .col-md-4 {
         float: left;
     }
-    .navbar-toggle {
+    .navbar-toggle, .account-navbar-toggle {
         display: none;
     }
 }
@@ -555,7 +567,7 @@ label {
         margin-left: 1%;
     }
 
-    .navbar.navbar-default.account .navbar-toggle,
+    .navbar.navbar-default.account .account-navbar-toggle,
     .navbar.navbar-default.account .navbar-brand{
         display: none;
     }

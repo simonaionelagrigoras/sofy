@@ -19,7 +19,18 @@ $('document').ready(function(){
             $(e.target).data('aria-expanded', true);
             $('.dropdown-menu').addClass('open');
         }
-    })
+    });
+
+    // toggle main menu on mobile rezolution, when clicking on menu icon
+    $('.account-navbar-toggle').on('click', function (e) {
+        if($(e.currentTarget).data('aria-expanded')==true){
+            $(e.currentTarget).data('aria-expanded', false);
+            $($(e.currentTarget).data('target')).find('li').hide();
+        }else{
+            $(e.currentTarget).data('aria-expanded', true);
+            $($(e.currentTarget).data('target')).find('li').show();
+        }
+    });
 
     // toggle main menu on mobile rezolution, when clicking on menu icon
     $('.navbar-toggle').on('click', function (e) {
@@ -32,10 +43,14 @@ $('document').ready(function(){
         }
     });
 
+
     //when sliding from mobile rezolution, make sure the main menu is displayed
     $(window).resize(function(){
         if($(window).width() >= 982 && $('.navbar-toggle').css('display') == 'none'){
             $('.nav.navbar-nav li.option').show();
+        }
+        if($(window).width() >= 581 && $('.account-navbar-toggle').css('display') == 'none'){
+            $('.nav.navbar-nav.account li').show();
         }
     });
     //end menu actions
@@ -46,7 +61,7 @@ $('document').ready(function(){
 		$.each($(e.target).find('.fieldset.required'), function(index, el){
 			if($(el).find('input').length && !$(el).find('input').val()){
 				$(el).append("<p class='error'>* This is a required field</p>");
-			}
+            }
 		})
 	})
 });

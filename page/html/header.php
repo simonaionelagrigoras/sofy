@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-home" href="#">Logo</a>
+                <span class="header-logo"></span><a class="navbar-home" href="#"><strong>SOFY</strong></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

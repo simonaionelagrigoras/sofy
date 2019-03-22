@@ -18,7 +18,8 @@
                 <div class="sidebar-nav">
                     <div class="navbar navbar-default account" role="navigation">
                         <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                            <button type="button" class="account-navbar-toggle" data-toggle="collapse" data-aria-expanded="false"
+                                    data-target=".sidebar-navbar-collapse-account">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -26,7 +27,7 @@
                             </button>
                             <span class="visible-xs navbar-brand">My Account</span>
                         </div>
-                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <div class="navbar-collapse collapse sidebar-navbar-collapse-account">
                             <ul class="nav navbar-nav account">
                                 <li class="active"><a href="#">Profile</a></li>
                                 <li><a href="#">My Repositories</a></li>
