@@ -52,6 +52,7 @@
 				</form>
 		   </div>
         </div>
+
         <?php require_once (getDir('page\html\footer.php'))?>
     </div>
 </body>
