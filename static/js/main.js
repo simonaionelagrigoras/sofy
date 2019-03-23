@@ -54,14 +54,16 @@ $('document').ready(function(){
         }
     });
     //end menu actions
-	
-	//form validation
-	$('form').on('submit', function(e){
-		event.preventDefault();
-		$.each($(e.target).find('.fieldset.required'), function(index, el){
-			if($(el).find('input').length && !$(el).find('input').val()){
-				$(el).append("<p class='error'>* This is a required field</p>");
+
+    //form validation
+    $('form').on('submit', function(e){
+        event.preventDefault();
+        $.each($(e.target).find('.fieldset.required'), function(index, el){
+            if($(el).find('input').length && !$(el).find('input').val() && !$(el).find('.error').length){
+                $(el).append("<p class='error'>* This is a required field</p>");
+            }else{
+                $(el).find('p.error').remove();
             }
-		})
-	})
+        })
+    })
 });
