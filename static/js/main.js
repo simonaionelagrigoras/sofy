@@ -64,4 +64,8 @@ $('document').ready(function(){
             }
 		})
 	})
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 });
