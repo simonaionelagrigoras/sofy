@@ -8,8 +8,8 @@
         </div>
         <div class="col-md-3 footer-nav">
             <ul class="list">
-                <li><a href="/about.php">About Us</a></li>
-                <li><a href="/contact.php">Contact</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="contact.php">Contact</a></li>
                 <li><a href="#">Terms &amp; Condition</a></li>
                 <li><a href="#">Privacy Policy</a></li>
             </ul>
@@ -18,7 +18,7 @@
             <h4>Support</h4>
             <ul class="list">
                 <li><a href="#">Help</a></li>
-                <li><a href="#">User Guide</a></li>
+                <li><a href="user-guide.php">User Guide</a></li>
                 <li><a href="#">Forum</a></li>
             </ul>
         </div>
