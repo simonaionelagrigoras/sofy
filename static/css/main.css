@@ -109,7 +109,14 @@ a {
     background: rgb(113,113,113);
     background: linear-gradient(180deg, rgba(113,113,113,1) 0%, rgba(0,0,0,1) 100%);
 }
-
+.user-guide-content img{
+    float: left;
+}
+.user-guide-content {
+    padding: 20px;
+    display: table;
+    width: 100%;
+}
 .navbar-home {
     float: left;
     height: 50px;
