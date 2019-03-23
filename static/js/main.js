@@ -59,8 +59,10 @@ $('document').ready(function(){
     $('form').on('submit', function(e){
         event.preventDefault();
         $.each($(e.target).find('.fieldset.required'), function(index, el){
-            if($(el).find('input').length && !$(el).find('input').val() && !$(el).find('.error').length){
-                $(el).append("<p class='error'>* This is a required field</p>");
+            if($(el).find('input').length && !$(el).find('input').val()){
+                if(!$(el).find('.error').length){
+                    $(el).append("<p class='error'>* This is a required field</p>");
+                }
             }else{
                 $(el).find('p.error').remove();
             }

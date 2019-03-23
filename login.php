@@ -43,11 +43,15 @@
             <div class="col-sm-6">
                 <h3>Login with existing account:</h3>
 				<form action="/action_page.php" method="post">
-					<label for="email_login">Email address</label>
-					<input type="text" id="email_login" class="form-control" placeholder="Email address" name="email">
-					<label for="password_login">Password</label>
-					<input type="password" id="password_login" class="form-control" placeholder="Password" name="password"
-						   minlength="8" required>
+                    <div class="fieldset required">
+					    <label for="email_login">Email address</label>
+					    <input type="text" id="email_login" class="form-control" placeholder="Email address" name="email">
+                    </div>
+                    <div class="fieldset required">
+                        <label for="password_login">Password</label>
+                        <input type="password" id="password_login" class="form-control" placeholder="Password" name="password"
+                               minlength="8" required>
+                    </div>
 					<input type="submit" class="btn btn-md" value="Sign Up">
 				</form>
 		   </div>
