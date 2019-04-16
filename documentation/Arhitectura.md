@@ -17,8 +17,13 @@
 
  ## Prezentare implementare
 Aplicatia este implementata folosind HTML, CSS, PHP. Urmatorul tabel prezinta tehnologiile folosite si cum ne ajuta acestea la implementare:
-Tehnologii | Unde va fi folosit | Link cod sursa | Detalii
------------------------------------------------------------
+| Tehnologii | Unde va fi folosit  | Detalii|
+| :------------ |:---------------:| -----:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
+| zebra stripes | are neat        |    $1 |
+
+
 
 
 
