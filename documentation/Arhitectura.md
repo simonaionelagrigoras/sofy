@@ -23,7 +23,7 @@ Pentru proiectele din clasa B: minimal, cele referitoare la funcţionalităţile
 Proiectarea şi implementarea interfeţei Web responsive ce va recurge la HTML5 şi CSS3. Vor fi oferite motivaţii asupra alegerii unei/unor anumite idei de design.
 
  ### Partea a-II-a
- #### Arhitectura aplicaţiei Web (
+ #### Arhitectura aplicaţiei Web 
 Prezentarea arhitecturii de ansamblu (e.g., via diagrame UML), plus etapele intermediare ale dezvoltării proiectului.
 
  ## Prezentare implementare
