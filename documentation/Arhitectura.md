@@ -14,6 +14,17 @@
  profil unde vor putea fi vizualizate toate aplicatiile incarcate de acesta. Sistemul va oferi si o interfata de management al
  software-ului la nivel de utilizator sau la nivel de administrator, rapoartele generate fiind disponibile in formatele HTML,
  CSV si PDF. Bonus: preluarea automata a datelor disponibile pe situri de profil precum Alternativeto.net si Softpedia. 
+  ### Partea I
+  #### Prototip al interfeţei Web
+  Specificarea cerinţelor principale:
+
+Pentru proiectele din clasa B: minimal, cele referitoare la funcţionalităţile esenţiale ale aplicaţiei;
+
+Proiectarea şi implementarea interfeţei Web responsive ce va recurge la HTML5 şi CSS3. Vor fi oferite motivaţii asupra alegerii unei/unor anumite idei de design.
+
+ ### Partea a-II-a
+ #### Arhitectura aplicaţiei Web (
+Prezentarea arhitecturii de ansamblu (e.g., via diagrame UML), plus etapele intermediare ale dezvoltării proiectului.
 
  ## Prezentare implementare
 Aplicatia este implementata folosind HTML, CSS, PHP. Urmatorul tabel prezinta tehnologiile folosite si cum ne ajuta acestea la implementare:
