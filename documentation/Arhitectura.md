@@ -32,6 +32,12 @@ Aceasta diagrama prezinta diferitele entitati ale aplicatiei.
 Aceasta diagrama prezinta un flow normal al unui utilizator.
 ![Diag](https://i.imgur.com/xR9z1LY.png)
 
+ ## Interfață - CSS & BEM
+Indiferent de metodologia pe care o alegem să o utilizați în proiecte., vom  beneficia de avantajele CSS și UI mai structurate. Unele stiluri sunt mai puțin stricte și mai flexibile, în timp ce altele sunt mai ușor de înțeles și se adaptează într-o echipă.
+Motivul pentru care am ales BEM peste alte metodologii se limitează la aceasta: este mai puțin confuz decât alte metode, dar ne oferă încă arhitectura bună pe care o dorim și cu o terminologie ușor de recunoscut.
+![Interfata](https://github.com/simonaionelagrigoras/sofy/blob/master/documentation/first-design-attempt.png?raw=true)
+
+
 
 
 
