@@ -37,9 +37,8 @@ Indiferent de metodologia pe care o alegem să o utilizați în proiecte., vom  
 Motivul pentru care am ales BEM peste alte metodologii se limitează la aceasta: este mai puțin confuz decât alte metode, dar ne oferă încă arhitectura bună pe care o dorim și cu o terminologie ușor de recunoscut.
 ![Interfata](https://github.com/simonaionelagrigoras/sofy/blob/master/documentation/first-design-attempt.png?raw=true)
 
-
-
-
+## Pagina de "My Acount"
+![myAcount](https://scontent.fsbz1-1.fna.fbcdn.net/v/t1.15752-9/54433960_2296037633782321_1875070060146458624_n.png?_nc_cat=102&_nc_eui2=AeHjJ5NplQ3X_C6htHugWGwbY2RAHZTkeV07u0XheG784NNAlUCiILndHfnLQL3MBq9vVkvVAqcG9bYWklCimtTq5I2YTvVOYH8CNNC_oiyzTw&_nc_ht=scontent.fsbz1-1.fna&oh=d00f341dd37b87f97fbb3dbd569ca66e&oe=5D3C0ABE)
 
 
 
