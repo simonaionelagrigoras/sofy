@@ -15,6 +15,13 @@
  software-ului la nivel de utilizator sau la nivel de administrator, rapoartele generate fiind disponibile in formatele HTML,
  CSV si PDF. Bonus: preluarea automata a datelor disponibile pe situri de profil precum Alternativeto.net si Softpedia. 
 
+ ## Prezentare implementare
+Aplicatia este implementata folosind HTML, CSS, PHP. Urmatorul tabel prezinta tehnologiile folosite si cum ne ajuta acestea la implementare:
+Tehnologii | Unde va fi folosit | Link cod sursa | Detalii
+-----------------------------------------------------------
+
+
+
  ## Cum se va lucra
 ### Metodologia Agile
 Grupul de metode Agile este bazat pe dezvoltarea iterativa si incrementala acolo unde specificatiile si solutiile provin din colaborarea intre echipe organizate individual, dar care au acelasi scop comun.
