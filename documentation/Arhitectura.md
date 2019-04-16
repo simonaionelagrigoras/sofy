@@ -57,5 +57,6 @@ Sprinturi
 Vom lucra in sprinturi de o saptamana. In fiecare sprint se va livra o functionalitate noua, sub forma unui MVP functional.
 Task planning / tracking
 Pentru a urmari progresul taskurilor vom folosi un tool free, ClubHouse (https://clubhouse.io/). Acesta ne va permite sa organizam munca in sprinturi si sa vedem care sunt Milestones si Deliverables. Estimand fiecare story, putem aproxima data completarii unei functionalitati.
+![ClubHose](https://i.imgur.com/cNjLb9Y.png)
 
 
