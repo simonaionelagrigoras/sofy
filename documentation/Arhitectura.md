@@ -17,8 +17,22 @@
 
  ## Prezentare implementare
 Aplicatia este implementata folosind HTML, CSS, PHP. Urmatorul tabel prezinta tehnologiile folosite si cum ne ajuta acestea la implementare:
-![Tabel](https://i.imgur.com/f3EhIG4.png)
-![Tabel1](https://i.imgur.com/0CV4nhp.png)
+![Tabel](https://i.imgur.com/uMssgks.png)
+![Tabel1](https://i.imgur.com/W1Kjinz.png)
+
+ ## Diagrame UML / funcționale
+ Diagrama modelelor
+Aceasta diagrama prezinta diferitele entitati ale aplicatiei.
+
+### User (username: String, password: String, websites: Array)
+### Snapshot (formData: Object, published_at: Date, href: String)
+![Diagrama](https://i.imgur.com/tQayRAb.png)
+
+ ## Diagrama unui flow normal de interactiune
+Aceasta diagrama prezinta un flow normal al unui utilizator.
+![Diag](https://i.imgur.com/xR9z1LY.png)
+
+
 
 
 
