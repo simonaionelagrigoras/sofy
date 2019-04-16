@@ -15,8 +15,8 @@
  software-ului la nivel de utilizator sau la nivel de administrator, rapoartele generate fiind disponibile in formatele HTML,
  CSV si PDF. Bonus: preluarea automata a datelor disponibile pe situri de profil precum Alternativeto.net si Softpedia. 
 
- ##Cum se va lucra
-###Metodologia Agile
+ ## Cum se va lucra
+### Metodologia Agile
 Grupul de metode Agile este bazat pe dezvoltarea iterativa si incrementala acolo unde specificatiile si solutiile provin din colaborarea intre echipe organizate individual, dar care au acelasi scop comun.
 Aceste metode au la baza 12 principii:
 
