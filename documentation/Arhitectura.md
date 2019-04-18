@@ -51,6 +51,18 @@ Aceasta diagrama prezinta diferitele entitati ale aplicatiei.
 Aceasta diagrama prezinta un flow normal al unui utilizator.
 ![Diag](https://i.imgur.com/xR9z1LY.png)
 
+ ## Diagrama Use-Case
+ ![Diagrama-Use-case](https://scontent-otp1-1.xx.fbcdn.net/v/t1.15752-9/58372891_659131627865029_2045540494695464960_n.png?_nc_cat=102&_nc_ht=scontent-otp1-1.xx&oh=f4b202597af2073cfb079f2b46ecba51&oe=5D2A1D17)
+
+ ## Pattern-ul MVC
+ Exemplu de comunicare intre view, controller si model in timpul interactionarii cu aplicatia:
+
+In momentul logarii, ne aflam in pagina Log in, introducem date in casutele username si password si dam submit, in acest moment componenta controller primeste de la view aceste date, username-ul si parola pe care le-am introdus, controllerul paseaza aceste date modelului iar modelul verifica in baza de date, mai exact in tabela user daca aceste date introduse sunt unice, daca da, atunci modelul ia din tabela datele necesare afisarii urmatorului page, le paseaza controllerului, iar acesta le da mai departe view-ului pentru ca acesta sa afiseze pagina Workspace, daca nu, atunci controllerul da mai departe un mesaj de eroare care este mai apoi afisat in view, in pagina Log in.
+
+(Fiecare pagina mentionata pana acum, ca spre exemplu log in sau workspace sunt viewuri care sunt afisate ca output userului prin procesarea anumitor date de catre controller luate de model din baza de date.)
+
+![MVC](https://scontent-otp1-1.xx.fbcdn.net/v/t1.15752-9/57191731_317141795637152_401147162307592192_n.png?_nc_cat=100&_nc_ht=scontent-otp1-1.xx&oh=fa430c650c1441484a87edc8941ef739&oe=5D72883C)
+
  ## Interfață - CSS & BEM
 Indiferent de metodologia pe care o alegem să o utilizați în proiecte., vom  beneficia de avantajele CSS și UI mai structurate. Unele stiluri sunt mai puțin stricte și mai flexibile, în timp ce altele sunt mai ușor de înțeles și se adaptează într-o echipă.
 Motivul pentru care am ales BEM peste alte metodologii se limitează la aceasta: este mai puțin confuz decât alte metode, dar ne oferă încă arhitectura bună pe care o dorim și cu o terminologie ușor de recunoscut.
