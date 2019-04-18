@@ -14,6 +14,12 @@
  profil unde vor putea fi vizualizate toate aplicatiile incarcate de acesta. Sistemul va oferi si o interfata de management al
  software-ului la nivel de utilizator sau la nivel de administrator, rapoartele generate fiind disponibile in formatele HTML,
  CSV si PDF. Bonus: preluarea automata a datelor disponibile pe situri de profil precum Alternativeto.net si Softpedia. 
+ 
+ First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
   ### Partea I
   #### Prototip al interfeţei Web
   Specificarea cerinţelor principale:
@@ -28,10 +34,12 @@ Prezentarea arhitecturii de ansamblu (e.g., via diagrame UML), plus etapele inte
 
  ## Prezentare implementare
 Aplicatia este implementata folosind HTML, CSS, PHP. Urmatorul tabel prezinta tehnologiile folosite si cum ne ajuta acestea la implementare:
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+| Tehnologie | Unde va fi folosita | Detalii |
+| :---         |     :---:      |          ---: |
+| 'HTML'   | git status     | git status    |
+| 'CSS'    | git diff       | git diff      |
+| 'PHP'   | git status     | git status    |
+| 'JQuery'    | git diff       | git diff      |
 
  ## Diagrame UML / funcționale
  Diagrama modelelor
