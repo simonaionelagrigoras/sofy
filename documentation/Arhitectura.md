@@ -28,12 +28,10 @@ Prezentarea arhitecturii de ansamblu (e.g., via diagrame UML), plus etapele inte
 
  ## Prezentare implementare
 Aplicatia este implementata folosind HTML, CSS, PHP. Urmatorul tabel prezinta tehnologiile folosite si cum ne ajuta acestea la implementare:
-| Tehnologie | Unde va fi folosita | Detalii |
-| :---         |     :---:      |          ---: |
-| 'HTML'   | git status     | git status    |
-| 'CSS'    | git diff       | git diff      |
-| 'PHP'   | git status     | git status    |
-| 'JQuery'    | git diff       | git diff      |
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
 
  ## Diagrame UML / funcționale
  Diagrama modelelor
