@@ -34,9 +34,7 @@ Aplicatia este implementata folosind HTML, CSS, PHP. Urmatorul tabel prezinta te
 
 Tehnologii  | Detalii
 ------------- | -------------
-HTML  | 
-Limbajul folosit pentru scrierea paginilor web este HTML. Acesta nu este un limbaj de programare, ci de "formatare" a textului si foloseste asa numitele marcaje, numite TAG-uri. O alta modalitate este de a folosi un editor HTML, asemanator editoarelor de text. In acestea utilizatorul scrie doar continutul paginii web, iar tagurile sunt introduse de editor in momentul formatarii textului de catre utilizator.
-
+HTML  | Limbajul folosit pentru scrierea paginilor web este HTML. Acesta nu este un limbaj de programare, ci de "formatare" a         textului si foloseste asa numitele marcaje, numite TAG-uri. O alta modalitate este de a folosi un editor HTML,                 asemanator editoarelor de text. In acestea utilizatorul scrie doar continutul paginii web, iar tagurile sunt introduse         de editor in momentul formatarii textului de catre utilizator.
 CSS   | Content Cell
 PHP   | Content Cell
 JQuery | Content Cell
