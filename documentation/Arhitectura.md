@@ -54,6 +54,18 @@ Aceasta diagrama prezinta un flow normal al unui utilizator.
  ## Diagrama Use-Case
  ![Diagrama-Use-case](https://scontent-otp1-1.xx.fbcdn.net/v/t1.15752-9/58372891_659131627865029_2045540494695464960_n.png?_nc_cat=102&_nc_ht=scontent-otp1-1.xx&oh=f4b202597af2073cfb079f2b46ecba51&oe=5D2A1D17)
 
+
+ ## Prelucrarea datelor
+ Dupa accesarea contului, utilizatorul va putea sa faca management la repositories.
+ Orice actiune (listare, adaugare, stergere) va fi facuta folosind ajax call-uri la enpointuri specifice fiecarei actiuni.
+ 
+ Enpointurile vor prelucra datele (upload fisier si adaugare in detalii in baza de date, stergere fisier, modificare detalii in DB, stergere/encriptare date in DB)
+ si vor trimite un mesaj de raspuns si un flag success sau error in functie de rezultatul procesarii.
+ 
+ Mesajul primit ii va fi afisat utilizatorului impreuna cu sugestii de actiuni/pasi de urmat in continuare.
+ 
+ Aceasta arhitectura este cunoscuta ca MVC - Model - View - Controller
+
  ## Pattern-ul MVC
  Exemplu de comunicare intre view, controller si model in timpul interactionarii cu aplicatia:
 
