@@ -1,0 +1,120 @@
+
+p.folder:before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background-image: url(../media/images/folder.jpg);
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    top: 5px;
+    right: 5px;
+    position: relative;
+    display: inline-block;
+}
+p.folder>a:hover{
+    cursor: pointer;
+}
+.fileUpload.btn.btn-primary {
+    color: #333;
+    width: 150px;
+    line-height: 30px;
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-align: center;
+    border: none;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#create-repo-btn{
+    padding: 6px 0px;
+}
+#create-repo-btn:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url(../media/images/add.jpg);
+    background-repeat: no-repeat;
+    background-size: 23px 23px;
+    top: 5px;
+    right: 5px;
+    position: relative;
+    display: inline-block;
+}
+.available-repos-select{
+    cursor: pointer;
+}
+.available-repos-select:before{
+    content: "";
+    width: 18px;
+    height: 18px;
+    background-image: url(../media/images/select.png);
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    top: 5px;
+    left: 5px;
+    position: relative;
+    display: inline-block;
+}
+
+[tooltip]::after {
+    content: attr(tooltip);
+    position: relative;
+    right: 15px;
+    top: 20px;
+    transform: translateX(-50%) translateY(-100%);
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    color: #fff;
+    padding: 4px 2px;
+    font-size: 11px;
+    min-width: 80px;
+    border-radius: 5px;
+    pointer-events: none;
+
+}
+span.tooltip {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+.available-repos-select:hover > span.tooltip{
+
+    visibility: visible;
+    opacity: 1;
+}
+.available-repos{
+    font-size: 13px;
+}
+
+span.upload-text:before{
+    content: "";
+    width: 22px;
+    height: 17px;
+    background-image: url(../media/images/upload.png);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    top: 5px;
+    /* left: 5px; */
+    position: relative;
+    display: inline-block;
+}

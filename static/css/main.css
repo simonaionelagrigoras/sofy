@@ -39,6 +39,9 @@ button, input, select, textarea {
     margin-bottom: 15px;
 }
 
+.hidden{
+    display: none;
+}
 .container {
     margin-right: auto;
     margin-left: auto;
@@ -72,6 +75,10 @@ button, input, select, textarea {
 }
 .container.my-account {
     background-color: transparent;
+}
+
+.container.my-account .repo-upload{
+    display:none;
 }
 .container.my-account .content {
     display: flex;
@@ -129,14 +136,12 @@ a {
 .navbar-nav>li a:hover {
     color: #4FF925;
 }
-
 .navbar-nav>li {
     float: left;
     position: relative;
     display: block;
     list-style: none;
 }
-
 
 .navbar-nav>li>a {
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
@@ -466,6 +471,37 @@ label {
     border-bottom-right-radius: 0;
 }
 
+/**********Contact us page******/
+.contact-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 300px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px dashed rgba(30, 30, 30, 0.2);
+}
+
+.contact-form input {
+    height: 20px;
+}
+
+.contact-form textarea {
+    height: 40px;
+}
+
+.contact-form #submit {
+    padding: 0;
+    height: 30px;
+    background-color: #2ecc71;
+    color: white;
+}
+/*** END contact us page ***/
 @media (min-width: 1200px) {
     .container {
         width: 1170px;
