@@ -49,7 +49,7 @@ Aceasta diagrama prezinta diferitele entitati ale aplicatiei.
 
  ## Diagrama unui flow normal de interactiune
 Aceasta diagrama prezinta un flow normal al unui utilizator.
-![Diag](https://i.imgur.com/xR9z1LY.png)
+![Diag](https://raw.githubusercontent.com/simonaionelagrigoras/sofy/master/documentation/flow_diagram.png)
 
  ## Diagrama Use-Case
  ![Diagrama-Use-case](https://scontent-otp1-1.xx.fbcdn.net/v/t1.15752-9/58372891_659131627865029_2045540494695464960_n.png?_nc_cat=102&_nc_ht=scontent-otp1-1.xx&oh=f4b202597af2073cfb079f2b46ecba51&oe=5D2A1D17)
