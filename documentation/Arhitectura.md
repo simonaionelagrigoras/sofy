@@ -52,7 +52,7 @@ Aceasta diagrama prezinta un flow normal al unui utilizator.
 ![Diag](https://raw.githubusercontent.com/simonaionelagrigoras/sofy/master/documentation/flow_diagram.png)
 
  ## Diagrama Use-Case
- ![Diagrama-Use-case](https://scontent-otp1-1.xx.fbcdn.net/v/t1.15752-9/58372891_659131627865029_2045540494695464960_n.png?_nc_cat=102&_nc_ht=scontent-otp1-1.xx&oh=f4b202597af2073cfb079f2b46ecba51&oe=5D2A1D17)
+ ![Diagrama-Use-case](https://raw.githubusercontent.com/simonaionelagrigoras/sofy/master/documentation/use_case.png)
 
 
  ## Prelucrarea datelor
@@ -91,7 +91,7 @@ Motivul pentru care am ales BEM peste alte metodologii se limitează la aceasta:
 Grupul de metode Agile este bazat pe dezvoltarea iterativa si incrementala acolo unde specificatiile si solutiile provin din colaborarea intre echipe organizate individual, dar care au acelasi scop comun.
 Aceste metode au la baza 12 principii:
 
-1. Satisfacerea clientilor, prin livrarea rapida de software utilizabil
+1.  Satisfacerea clientilor, prin livrarea rapida de software utilizabil
 2.  Intampinarea modificarii specificatiilor, chiar si tarziu in implementare
 3.  Software-ul utilizabil este livrat frecvent (la nivel de saptamani)
 4.  Software-ul utilizabil reprezinta principala masura a progresului
