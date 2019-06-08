@@ -8,12 +8,16 @@
 
 class Controller
 {
+    protected $session;
     var $vars = [];
     var $layout = "default";
 
     public function __construct()
     {
+        require(ROOT . 'Models/Session.php');
+        $this->session = new Session();
     }
+
 
     public function setData($key, $value)
     {
@@ -25,7 +29,10 @@ class Controller
         extract($this->vars);
         $controllerName = str_replace('Controller', '', get_class($this));
         $containerClass = $this->getContainerClass($controllerName);
-        $baseUrl        = isset($_SERVER['HTTPS']) ? 'https://' . $_SERVER['HTTP_HOST'] : 'http://' . $_SERVER['HTTP_HOST'];
+
+        $baseUrl    = isset($_SERVER['HTTPS']) ? 'https://' . $_SERVER['HTTP_HOST'] : 'http://' . $_SERVER['HTTP_HOST'];
+        $isLoggedIn = is_null($this->session->getCurrentUser()) ? false : true;
+        $userName   = $this->session->getCurrentUserName();
 
         ob_start();
         require(ROOT . "Views/" . ucfirst($controllerName) . '/' . $filename . '.php');

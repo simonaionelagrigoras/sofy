@@ -8,6 +8,10 @@
 
 class userController extends Controller
 {
+    protected $user;
+    protected $helper;
+    protected $session;
+
     public function __construct()
     {
         parent::__construct();
@@ -37,10 +41,7 @@ class userController extends Controller
 				// Password is correct, so start a new session
 				$userId   = $this->user->getFieldByEmail($email, 'entity_id');
 				$username = $this->user->getFieldByEmail($email, 'name');
-				session_start();
-				$_SESSION['logged_in'] = true;
-				$_SESSION['user_id']   = $userId;
-				$_SESSION['user_name'] = $userName;
+                $this->session->loginUser($userId, $username);
 
 				// Redirect user to account page
 				header("Location:" . WEBROOT . "account/index");
