@@ -25,8 +25,8 @@
                            data-aria-expanded="false"><span class="carety" id="user-account"></span></a>
                         <ul class="dropdown-menu">
                             <?php if (!$userIsLoggedIn):?>
-                                <li><a href="login.php">Login</a></li>
-                                <li><a href="#">Registration</a></li>
+                                <li><a href="/user/login">Login</a></li>
+                                <li><a href="/user/login">Registration</a></li>
                             <?php else:?>
                                 <li><a href="#">My account</a></li>
                                 <li><a href="#">My Repositories</a></li>
