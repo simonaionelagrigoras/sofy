@@ -34,9 +34,40 @@
             </div>
 
             <div class="preview">
-                <div id="loader-icon" style="display: none;"><img src="static/media/images/loader.gif"></div>
+                <div id="loader-icon" style="display: none;"><img src="<?= $baseUrl?>/static/media/images/loader.gif"></div>
                 <div><div class="delete_file"></div></div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $('document').ready(function() {
+        function getUserRepositories() {
+            $.ajax({
+                url: '/repositories/getList',
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    var result = '';
+
+                    if (typeof response.error != 'undefined') {
+                        alert(response.error);
+                    }
+                    $.each(response, function (index, element) {
+                        console.log(data);
+                        $('.existent-repo')
+                    })
+                },
+                error: function (response) {
+                    var result = '';
+                    response = response.responseJSON;
+
+                    if (typeof response.error != 'undefined') {
+                        alert(response.error);
+                    }
+                }
+            });
+        }
+        getUserRepositories();
+    });
+</script>

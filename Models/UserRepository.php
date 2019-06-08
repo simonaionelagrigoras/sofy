@@ -48,4 +48,16 @@ class UserRepository extends Model
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([$userId, $repositoryId]);
     }
+
+    public function getUserRepositories($id)
+    {
+        $sql = "SELECT repository_id, repository.name, repository.version, user_repository.resource" .
+            " FROM `user_repository` " .
+            " LEFT JOIN  repository on repository.entity_id = user_repository.repository_id" .
+            " WHERE user_id=$id";
+        $query = Database::getBdd()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
