@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php require_once('page\html\header.php') ?>
-<div class="container <?php echo 'specific-class'?>">
+<div class="container <?= $containerClass ?>">
     <div class="content">
         <?php echo $content_for_layout ?>
     </div>

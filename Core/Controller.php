@@ -24,7 +24,9 @@ class Controller
     {
         extract($this->vars);
         $controllerName = str_replace('Controller', '', get_class($this));
-        $baseUrl    = isset($_SERVER['HTTPS']) ? 'https://' . $_SERVER['HTTP_HOST'] : 'http://' . $_SERVER['HTTP_HOST'];
+        $containerClass = $this->getContainerClass($controllerName);
+        $baseUrl        = isset($_SERVER['HTTPS']) ? 'https://' . $_SERVER['HTTP_HOST'] : 'http://' . $_SERVER['HTTP_HOST'];
+
         ob_start();
         require(ROOT . "Views/" . ucfirst($controllerName) . '/' . $filename . '.php');
         $content_for_layout = ob_get_clean();
@@ -38,4 +40,22 @@ class Controller
             require(ROOT . "Views/Layouts/" . $this->layout . '.php');
         }
     }
+
+    protected function getContainerClass($controllerName)
+    {
+        if(empty($controllerName))
+        {
+            return '';
+        }
+        switch($controllerName){
+            case 'about':
+                $class = 'about-us';
+                break;
+            default:
+                $class = $controllerName;
+        }
+
+        return $class;
+    }
+
 }
