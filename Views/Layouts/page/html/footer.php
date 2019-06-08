@@ -9,7 +9,7 @@
         <div class="col-md-3 footer-nav">
             <ul class="list">
                 <li><a href="/about/index">About Us</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="/contact/index">Contact</a></li>
                 <li><a href="#">Terms &amp; Condition</a></li>
                 <li><a href="#">Privacy Policy</a></li>
             </ul>

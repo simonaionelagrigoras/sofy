@@ -17,8 +17,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="option selected"><a href="#">Home</a></li>
-                    <li class="option"><a href="#about">Features</a></li>
-                    <li class="option"><a href="#contact">Contact</a></li>
+                    <li class="option"><a href="/about/index">Features</a></li>
+                    <li class="option"><a href="/about/index">About Us</a></li>
+                    <li class="option"><a href="/contact/index">Contact</a></li>
                     <li class="dropdown" style="float:right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            data-aria-expanded="false"><span class="carety" id="user-account"></span></a>
