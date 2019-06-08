@@ -23,4 +23,14 @@ class Repository extends Model
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([$id]);
     }
+
+    public function getMainRepositories()
+    {
+        $sql = "SELECT DISTINCT name AS repository_name" .
+            " FROM `repository` ";
+        $query = Database::getBdd()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

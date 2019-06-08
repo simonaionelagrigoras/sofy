@@ -1,3 +1,4 @@
+
 <div class="col-sm-3" id="account-navigation">
     <?php require_once ('html\left_navigation.php')?>
 </div>
@@ -11,17 +12,15 @@
         <div class="create-repo">
             <a id="create-repo-btn" class="btn btn-md">Create repository</a>
 
-            <div class="chose-repo hidden">
-                <select class="available-repos">
-                    <option value=""><i>Select repo to upload</i></option>
-                    <option value="centos-2">centos-2</option>
-                    <option value="centos-3">centos-3</option>
-                </select>
-                <span class="available-repos-select">  <span tooltip="Click to select repository" class="tooltip"></span></span>
+            <div class="chose-repo hidden step-1">
+                <div class="available-repos">
+
+                </div>
+<!--                <span class="available-repos-select">  <span tooltip="Click to select repository" class="tooltip"></span></span>-->
                 <p class="error hidden">Please select a repository</p>
             </div>
 
-            <div class="repo-upload-box hidden">
+            <div class="repo-upload-box hidden step-2">
                 <div class="fileUpload btn-primary">
                     <span class="upload-text">Select files to upload</span>
                     <input name="userFile" id="userFile" multiple="" max="3" type="file" class="upload">
@@ -37,6 +36,8 @@
                 <div id="loader-icon" style="display: none;"><img src="<?= $baseUrl?>/static/media/images/loader.gif"></div>
                 <div><div class="delete_file"></div></div>
             </div>
+
+            <button data-step="1" class="hidden next" disabled="disabled">Next</button>
         </div>
     </div>
 </div>
@@ -54,7 +55,7 @@
                         alert(response.error);
                     }
                     $.each(response, function (index, element) {
-                        console.log(data);
+                        console.log(element);
                         $('.existent-repo')
                     })
                 },
@@ -69,5 +70,7 @@
             });
         }
         getUserRepositories();
+
     });
 </script>
+<script src="<?= $baseUrl ?>/static/js/upload.js"></script>

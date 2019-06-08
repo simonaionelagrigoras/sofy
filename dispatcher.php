@@ -13,12 +13,17 @@ class Dispatcher
 
     public function dispatch()
     {
-        $this->request = new Request();
-        Router::parse($this->request->url, $this->request);
+        try{
+            $this->request = new Request();
+            Router::parse($this->request->url, $this->request);
 
-        $controller = $this->loadController();
+            $controller = $this->loadController();
 
-        call_user_func_array([$controller, $this->request->action], $this->request->params);
+            call_user_func_array([$controller, $this->request->action], $this->request->params);
+        }catch (Exception $e){
+            return $e->getMessage();
+        }
+
     }
 
     public function loadController()

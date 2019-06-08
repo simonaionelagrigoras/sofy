@@ -1,5 +1,85 @@
 $('document').ready(function(){
 
+    function makeGet(url, step, data){
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            data: data,
+            success: function (response) {
+                if (typeof response.error != 'undefined') {
+                    return [];
+                }
+                switch (step){
+                    case 'step1':
+                        parseAvailableRepo(response);
+                        break;
+                    case 'step2':
+                        parseAvailableVersions(response);
+                        break;
+                }
+                return response;
+            },
+            error: function (response) {
+                response = response.responseJSON;
+
+                if (typeof response.error != 'undefined') {
+                    return [];
+                }
+            }
+        });
+    }
+
+    function parseAvailableRepo(repositories)
+    {
+        var availableRepositories = '';
+        $.each(repositories, function (index, element) {
+            var radioOption = '<input type="radio" name="repository_name" value="' + element.repository_name + '">'+ element.repository_name + '<br>\n';
+            availableRepositories = availableRepositories + radioOption
+        });
+        $('.available-repos').html(availableRepositories)
+        $('.chose-repo').toggle(300);
+        $('button.next').attr('data-step', 2);
+        $('button.next').show();
+    }
+
+    function parseAvailableVersions(versions)
+    {
+        var availableVersions = '';
+        /*$.each(repositories, function (index, element) {
+            var radioOption = '<input type="radio" name="repository_name" value="' + element.repository_name + '">'+ element.repository_name + '<br>\n';
+            availableRepositories = availableRepositories + radioOption
+        });
+        $('.available-repos').html(availableRepositories)
+        $('.chose-repo').toggle(300);*/
+        $('button.next').attr('data-step', 3);
+        $('button.next').show();
+    }
+
+    $(document).on('click', '#create-repo-btn', function(){
+        makeGet('/repositories/getAvailableRepositories', 'step1');
+    });
+
+    $(document).on('click', 'button.next', function(el){
+        var step = parseInt($(el.target).attr('data-step'));
+        switch(step) {
+            case 1:
+                break;
+            case 2:
+                var repoName = $("input[name='repository_name']:checked").val();
+                makeGet('/repositories/getAvailableVersions', 'step2', {'respository_name': repoName});
+                break;
+            case "Apple":
+                text = "How you like them apples?";
+                break;
+            default:
+                text = "I have never heard of that fruit...";
+        }
+    });
+    $(document).on('click', 'input[name="repository_name"]', function(el){
+        $('button.next').prop("disabled", false)
+    });
     //form validation
     $('#account-repository').on('click', function(e){
         $('.profile').hide();
@@ -37,25 +117,21 @@ $('document').ready(function(){
         });
     });
 
-    jQuery(document).on('click', '#create-repo-btn', function(){
-        jQuery('.chose-repo').toggle(300);
-    });
-
-    jQuery(document).on('click', '.available-repos-select', function(){
+    $(document).on('click', '.available-repos-select', function(){
         var repo = $('select.available-repos option:selected').val();
         if(!repo.length){
-            jQuery('.chose-repo p.error').show();
+            $('.chose-repo p.error').show();
         }else{
-            jQuery('.chose-repo p.error').hide();
-            jQuery('.repo-upload-box').toggle(200);
+            $('.chose-repo p.error').hide();
+            $('.repo-upload-box').toggle(200);
             $('select.available-repos').attr('disabled', 'disabled');
         }
     });
 
-    jQuery(document).on("change", "#userFile", function() {
-        jQuery('.upload-error').hide();
-        var file_data = jQuery("#userFile").prop("files");   // Getting the properties of file from file field
-        var existing_files = jQuery('.uploaded-values').length;
+    $(document).on("change", "#userFile", function() {
+        $('.upload-error').hide();
+        var file_data = $("#userFile").prop("files");   // Getting the properties of file from file field
+        var existing_files = $('.uploaded-values').length;
         var repo = $('select.available-repos option:selected').val();
 
         var form_data = new FormData();
@@ -64,17 +140,17 @@ $('document').ready(function(){
 
         form_data.append("repo", repo);
 
-        //var file_name = jQuery("#userFile").prop("files")[0].name;
-        //var file_type = jQuery("#userFile").prop("files")[0].type;
-        //var file_size = jQuery("#userFile").prop("files")[0].size;
+        //var file_name = $("#userFile").prop("files")[0].name;
+        //var file_type = $("#userFile").prop("files")[0].type;
+        //var file_size = $("#userFile").prop("files")[0].size;
 
-        if(jQuery('#userFile').val()) {
+        if($('#userFile').val()) {
             //e.preventDefault();
-            jQuery('#loader-icon').show();
-            if(jQuery(".upload-error").length){
-                jQuery(".upload-error").hide();
+            $('#loader-icon').show();
+            if($(".upload-error").length){
+                $(".upload-error").hide();
             }
-            jQuery.ajax({
+            $.ajax({
                 url: "app/upload",
                 dataType: 'json',
                 cache: false,
@@ -85,29 +161,29 @@ $('document').ready(function(){
                 type: 'post',
                 target:   '#targetLayer',
                 beforeSubmit: function() {
-                    jQuery("#progress-bar").width('0%');
+                    $("#progress-bar").width('0%');
                 },
                 uploadProgress: function (event, position, total, percentComplete){
-                    jQuery("#progress-bar").width(percentComplete + '%');
-                    jQuery("#progress-bar").html('<div id="progress-status">' + percentComplete +' %</div>')
+                    $("#progress-bar").width(percentComplete + '%');
+                    $("#progress-bar").html('<div id="progress-status">' + percentComplete +' %</div>')
                 },
                 success:function (data){
                     if(data.error){
-                        jQuery('.repo-upload-box .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
-                        jQuery('#loader-icon').hide();
+                        $('.repo-upload-box .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
+                        $('#loader-icon').hide();
                     }else{
-                        jQuery('#loader-icon').hide();
-                        jQuery(".preview").append('<div>'+ data.file_uploaded +'<div class="delete_file"></div></div>');
+                        $('#loader-icon').hide();
+                        $(".preview").append('<div>'+ data.file_uploaded +'<div class="delete_file"></div></div>');
                     }
                 },
                 error:function (data){
                     if(data.responseText){
                         var response = JSON.parse(data.responseText)
-                        jQuery('.repo-upload-box .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
-                        jQuery('#loader-icon').hide();
+                        $('.repo-upload-box .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
+                        $('#loader-icon').hide();
                     }else{
-                        jQuery('#loader-icon').hide();
-                        jQuery('.repo-upload-box .customer-personalization:first-child').after('<p class="upload-error">An error occurred</p>');
+                        $('#loader-icon').hide();
+                        $('.repo-upload-box .customer-personalization:first-child').after('<p class="upload-error">An error occurred</p>');
                     }
                 },
                 resetForm: true

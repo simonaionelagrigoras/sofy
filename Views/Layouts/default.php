@@ -4,6 +4,7 @@
     <title>Sofy</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="<?= $baseUrl ?>/static/css/main.css" />
+    <link rel="stylesheet" href="<?= $baseUrl ?>/static/css/upload.css" />
     <script src="<?= $baseUrl ?>/static/js/main.js"></script>
     <!-- Used for responsive design in order to control dimensions and scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
