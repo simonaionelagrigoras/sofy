@@ -3,7 +3,7 @@
 <div class="content login-register">
     <div class="col-sm-6">
         <h3>Create an account:</h3>
-        <form action="/action_page.php" method="post">
+        <form action="/user/create" method="post">
             <div class="fieldset required">
                 <label for="name">Name</label>
                 <input type="text" id="name" class="form-control" placeholder="Email address" name="name">
@@ -27,7 +27,7 @@
     </div>
     <div class="col-sm-6">
         <h3>Login with existing account:</h3>
-        <form action="/action_page.php" method="post">
+        <form action="/user/loginPost" method="post">
             <div class="fieldset required">
                 <label for="email_login">Email address</label>
                 <input type="text" id="email_login" class="form-control" placeholder="Email address" name="email">
