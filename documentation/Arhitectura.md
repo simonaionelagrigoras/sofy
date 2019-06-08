@@ -39,13 +39,7 @@ CSS   | CSS este un limbaj care defineste "layout-ul" pentru documentele HTML. C
 PHP   | PHP este un limbaj de programare. Numele PHP provine din limba engleză și este un acronim recursiv : Php: Hypertext           Preprocessor. Folosit inițial pentru a produce pagini web dinamice, este folosit pe scară largă în dezvoltarea                 paginilor și aplicațiilor web. Se folosește în principal înglobat în codul HTML, dar începând de la versiunea 4.3.0 se         poate folosi și în mod „linie de comandă” (CLI), permițând crearea de aplicații independente. Este unul din cele mai           importante limbaje de programare web open-source și server-side, existând versiuni disponibile pentru majoritatea             web serverelor și pentru toate sistemele de operare. Conform statisticilor este instalat pe 20 de milioane de site-uri         web și pe 1 milion de servere web. Este disponibil sub Licenṭa PHP ṣi Free Software Foundation îl consideră a fi un           software liber. ( Sursa: www.wikipedia.ro)
 JQuery | jQuery este o platformă de dezvoltare JavaScript, concepută pentru a ușura și îmbunătăți procese precum traversarea            arborelui DOM în HTML, managementul inter-browser al evenimentelor, animații și cereri tip AJAX. jQuery a fost                gândit să fie cât mai mic posibil, disponibil în toate versiunile de browsere importante existente, și să respecte            filosofia "Unobtrusive JavaScript". Biblioteca a fost lansată in 2006 de către John Resig . (Sursa :                          www.wikipedia.ro)
 
- ## Diagrame UML / funcționale
- Diagrama modelelor
-Aceasta diagrama prezinta diferitele entitati ale aplicatiei.
-
-### User (username: String, password: String, websites: Array)
-### Snapshot (formData: Object, published_at: Date, href: String)
-![Diagrama](https://i.imgur.com/tQayRAb.png)
+ 
 
  ## Diagrama unui flow normal de interactiune
 Aceasta diagrama prezinta un flow normal al unui utilizator.

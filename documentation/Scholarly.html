@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <link rel='stylesheet' href='Scolary.css'>
+    <title>Scholarly HTML Sofy</title>
+</head>
+<body prefix="schema: http://schema.org">
+<header>
+    <div class="banner">
+        <img src="https://i.imgur.com/zFtGZME.png" width="227" height="50" alt="Scholarly HTML logo">
+    </div>
+    <h1>Scholarly HTML Sofy</h1>
+</header>
+<a href="https://docs.google.com/document/d/1bV7-Uwqi7cAoaaLUAD9dq6cVQpdjxOFN6AL0knF_iVY">
+    <h2><em> Manual de utilizare</em></h2>
+</a>
+
+    <div role="contentinfo">
+        <dl>
+            <dt>Authors</dt>
+            <dd>
+                Grigoras Simona
+                &amp;
+                <a href="https://github.com/simonaionelagrigoras">GitHub</a>,
+                &amp;
+                <a href="https://www.facebook.com/sim.grigoras">Facebook</a>
+            </dd>
+            <dd>
+                Motas David
+                &amp;
+                <a href="https://github.com/MotasD">GitHub</a>
+                &amp;
+                <a href="https://www.facebook.com/motas.david.9">Facebook</a>
+            </dd>
+            <dd>
+                Grigoras Marian
+                &amp;
+                <a href="https://github.com/Grig0">GitHub</a>
+                &amp;
+                <a href="https://www.facebook.com/grigoras.marian2">Facebook</a>
+            </dd>
+            <dt>Bugs &amp; Feedback</dt>
+            <dd>
+                <a href="https://github.com/simonaionelagrigoras/sofy/blob/master/README.md">Sofy</a>
+            </dd>
+        </dl>
+    </div>
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+        <h2>Abstract</h2>
+        <p>
+            Scholarly HTML is a domain-specific rich document format built entirely on open standards
+            that enables the interoperable exchange of scholarly articles in a manner that is compatible
+            with off-the-shelf browsers. This document describes how Scholarly HTML works and how it is
+            encoded.
+        </p>
+    </section>
+    <section id="introduction" role="doc-introduction">
+        <!-- review? -->
+        <h2>Introduction</h2>
+        <p>
+            Scholarly articles are still primarily published as unstructured data in which most of the
+            information created by the research and the practice of authoring is lost. Document
+            technology has reached a level of maturity and universality that makes this situation no
+            longer tenable. Information cannot be disseminated if it is destroyed before even having
+            left its creator’s laptop.
+        </p>
+        <p>
+            According to the New York Times, adding structured information to their recipes improved
+            their discoverability to the point of producing an immediate rise of 52 percent in traffic
+            (<a role="doc-biblioref">NYT</a>). At this point in time, cupcake recipes are reaping
+            greater benefits from modern data format practices than the whole scientific endeavour.
+        </p>
+        <p>
+            This places a great burden on tool developers and service providers as well. Anyone who
+            has explored the world of extracting data from inert publications has built their own
+            complex toolset, offering no interoprability, no opportunity for cooperative improvements,
+            and little or no growth in discoverability or meta-analysis in this area.
+        </p>
+        <p>
+            To address these issues, we have followed an approach rooted in established best practices
+            for the reuse of open, standard formats. We propose an "HTML Vernacular", a set of
+            guidelines for the creation of domain-specific data formats that make use of HTML’s
+            inherent extensibility  (<a role="doc-biblioref">Science.AI, 2015</a>). Using the
+            vernacular foundation overlaid with schema.org metadata and proposed extensions to it, we
+            have produced a format for the authoring and interchange of scholarly articles built on
+            open standards, ready for all to use. We hope that this format will be usable
+            <a href="http://www.nytimes.com/2016/03/16/science/asap-bio-biologists-published-to-the-internet.html?_r=1">rogue
+                scientists</a> who choose to publish their articles on their own.
+        </p>
+        <p>
+            Our high-level goals are to:
+        </p>
+        <ul>
+            <li>Enable structured metadata, accessibility, and internationalisation.</li>
+            <li>Be fully funcitioning on modern Web browsers.</li>
+            <li>
+                Be customizable for inclusion in arbitrary Web sites, while remaining easy to process
+                and interoperable.
+            </li>
+            <li>Build on top of open, royalty-free standards.</li>
+            <li>Long-term viability as a data format.</li>
+        </ul>
+        <p>
+            Where semantic modeling is concerned, our approach is to stick as much as possible to the
+            schema.org. Beyond the obvious advantages there are in reusing a vocabulary that is
+            supported by all the major search engines and is actively being developed towards enabling a
+            shared understanding of many useful concepts, it also provides a protection against
+            <i>ontological drift</i> whereby a new vocabulary is defined by a small group with
+            insufficient input from a broader community of practice. A language that solely a single
+            participant understands is of limited value.
+        </p>
+        <p>
+            In a limited number of cases we have had to depart from schema.org, using the
+            <code>https://ns.science.ai/</code>, prefixed with <code>sa:</code>. Our goal is to work
+            with schema.org in order to extend their vocabulary, and we will align our usage with the
+            outcome of these discussions.
+        </p>
+    </section>
+    <h2>Structure</h2>
+    <p><em>Partea I</em></p>
+    <p>Sa se realizeze o aplicatie Web care gestioneaza un depozit online de aplicatii (software repository).
+        Acestea vor putea fi transferate prin ‘upload’ de catre utilizatorii autentificati.
+        Aplicatiile incarcate vor putea fi grupate dupa diverse criterii (precum platforma hardware, sistemul de operare, tipul
+        licentei, functionalitatile oferite (e.g., utilitar, suita de birou, instrument Internet) etc. sau pe baza unor termeni
+        de continut (i.e. clasificare via tagging). Sistemul va permite adaugarea unor informatii suplimentare pentru fiecare
+        aplicatie incarcata, precum descrierea, situl Web oficial, istoricul versiunilor, frecventa actualizarilor si altele.
+        De asemenea, pentru fiecare aplicatie, vor fi afisate data incarcarii, numarul de download-uri, marimea, alte aplicatii
+        similare. Fiecare utilizator va avea un profil unde vor putea fi vizualizate toate aplicatiile incarcate de acesta. S
+        istemul va oferi si o interfata de management al software-ului la nivel de utilizator sau la nivel de administrator,
+        rapoartele generate fiind disponibile in formatele HTML, CSV si PDF.
+        Bonus: preluarea automata a datelor disponibile pe situri de profil precum Alternativeto.net si Softpedia.
+    <p><em>Partea a II-a</em></p>
+    <p>Specificarea cerinţelor principale:
+
+        Pentru proiectele din clasa B: minimal, cele referitoare la funcţionalităţile esenţiale ale aplicaţiei;
+
+        Proiectarea şi implementarea interfeţei Web responsive ce va recurge la HTML5 şi CSS3. Vor fi oferite motivaţii asupra alegerii unei/unor anumite idei de design.
+
+        <b>Arhitectura aplicaţiei Web</b>
+        Prezentarea arhitecturii de ansamblu (e.g., via diagrame UML), plus etapele intermediare ale dezvoltării proiectului.
+
+    </p>
+
+
+        <section id="article">
+
+        <h3><code>Implementare</code></h3>
+        <p>Aplicatia este implementata folosind HTML, CSS, PHP. Urmatorul tabel prezinta tehnologiile folosite si cum ne ajuta acestea la implementare:</p>
+        <table style="width:100%">
+            <tr>
+                <th>Tehnologie</th>
+                <th>Detalii</th>
+            </tr>
+            <tr>
+                <td><b>HTML</b></td>
+                <td><h6>Limbajul folosit pentru scrierea paginilor web este HTML. Acesta nu este un limbaj de programare, ci de "formatare" a textului si foloseste asa numitele marcaje, numite TAG-uri. O alta modalitate este de a folosi un editor HTML, asemanator editoarelor de text. In acestea utilizatorul scrie doar continutul paginii web, iar tagurile sunt introduse de editor in momentul formatarii textului de catre utilizator.
+            </tr>
+            <tr>
+                <td><b>CSS:</b></td>
+                <td><h6>CSS este un limbaj care defineste "layout-ul" pentru documentele HTML. CSS acopera culori, font-uri, margini (borders), linii, inaltime, latime, imagini de fundal, pozitii avansate si multe alte optiuni.
+                    HTML este de multe ori folosit necorespunzator pentru a crea layoutul site-urilor de internet. CSS ofera mai multe optiuni, este mai exact si sofisticat. In plus, este suportat de toate browserele actuale.</h6>
+                </h6></td>
+            </tr>
+            <tr>
+                <td><b>
+                    PHP
+                </b></td>
+                <td><h6>
+                    PHP este un limbaj de programare. Numele PHP provine din limba engleză și este un acronim recursiv : Php: Hypertext Preprocessor. Folosit inițial pentru a produce pagini web dinamice, este folosit pe scară largă în dezvoltarea paginilor și aplicațiilor web. Se folosește în principal înglobat în codul HTML, dar începând de la versiunea 4.3.0 se poate folosi și în mod „linie de comandă” (CLI), permițând crearea de aplicații independente. Este unul din cele mai importante limbaje de programare web open-source și server-side, existând versiuni disponibile pentru majoritatea web serverelor și pentru toate sistemele de operare. Conform statisticilor este instalat pe 20 de milioane de site-uri web și pe 1 milion de servere web. Este disponibil sub Licenṭa PHP ṣi Free Software Foundation îl consideră a fi un software liber. ( Sursa: www.wikipedia.ro)
+
+                </h6></td>
+            </tr>
+            <tr>
+                <td><b>JavaScript</b></td>
+
+                <td><h6>JavaScript este un limbaj de programare orientat obiect bazat pe conceptul prototipurilor. Este folosit mai ales pentru introducerea unor funcționalități în paginile web, codul JavaScript din aceste pagini fiind rulat de către browser. Limbajul este binecunoscut pentru folosirea sa în construirea siturilor web, dar este folosit și pentru accesul la obiecte încastrate (embedded objects) în alte aplicații..</h6></td>
+            </tr>
+        </table>
+        <h1><b>Interfata</b></h1>
+        <em>Indiferent de metodologia pe care o alegem să o utilizați în proiecte., vom beneficia de avantajele CSS și UI mai structurate. Unele stiluri sunt mai puțin stricte și mai flexibile, în timp ce altele sunt mai ușor de înțeles și se adaptează într-o echipă. Motivul pentru care am ales BEM peste alte metodologii se limitează la aceasta: este mai puțin confuz decât alte metode, dar ne oferă încă arhitectura bună pe care o dorim și cu o terminologie ușor de recunoscut.
+        </em>
+            <img src="https://github.com/simonaionelagrigoras/sofy/blob/master/documentation/first-design-attempt.png?raw=true"  style="width: 820px;height: 420px">
+            <h3>Pagina My Acount</h3>
+            <br><img src="https://scontent.fsbz1-1.fna.fbcdn.net/v/t1.15752-9/54433960_2296037633782321_1875070060146458624_n.png?_nc_cat=102&_nc_eui2=AeHjJ5NplQ3X_C6htHugWGwbY2RAHZTkeV07u0XheG784NNAlUCiILndHfnLQL3MBq9vVkvVAqcG9bYWklCimtTq5I2YTvVOYH8CNNC_oiyzTw&_nc_ht=scontent.fsbz1-1.fna&oh=d00f341dd37b87f97fbb3dbd569ca66e&oe=5D3C0ABE" style="width:400px;height:520px;">
+
+            <br>
+
+        <h1><b>Diagrama unui flow normal de interactiune</b></h1><
+        <img src=" https://raw.githubusercontent.com/simonaionelagrigoras/sofy/master/documentation/flow_diagram.png" style="width: 620px;height: 720px">
+
+        <h4>Aeasta diagrama prezinta un flow normal al unui utilizator..</h5>
+
+            <h1><b>
+                Diagrama Use-Case
+            </b></h1>
+            <img src="https://raw.githubusercontent.com/simonaionelagrigoras/sofy/master/documentation/use_case.png" style="width: 720px;height: 620px">
+            <section id="hunk">
+
+                <h3><em>Prelucrarea datelor</em></h3>
+
+                <p>Dupa accesarea contului, utilizatorul va putea sa faca management la repositories. Orice actiune (listare, adaugare, stergere) va fi facuta folosind ajax call-uri la enpointuri specifice fiecarei actiuni.</p>
+                <p>Enpointurile vor prelucra datele (upload fisier si adaugare in detalii in baza de date, stergere fisier, modificare detalii in DB, stergere/encriptare date in DB) si vor trimite un mesaj de raspuns si un flag success sau error in functie de rezultatul procesarii.</p>
+                <p>
+                    Mesajul primit ii va fi afisat utilizatorului impreuna cu sugestii de actiuni/pasi de urmat in continuare.
+                </p>
+                <p>
+                    Aceasta arhitectura este cunoscuta ca MVC - Model - View - Controller
+                </p>
+                <h3><b>
+                    Pattern-ul MVC
+                </b></h3>
+                <p>
+                    Exemplu de comunicare intre view, controller si model in timpul interactionarii cu aplicatia:
+                </p>
+                <p>
+                    In momentul logarii, ne aflam in pagina Log in, introducem date in casutele username si password si dam submit, in acest moment componenta controller primeste de la view aceste date, username-ul si parola pe care le-am introdus, controllerul paseaza aceste date modelului iar modelul verifica in baza de date, mai exact in tabela user daca aceste date introduse sunt unice, daca da, atunci modelul ia din tabela datele necesare afisarii urmatorului page, le paseaza controllerului, iar acesta le da mai departe view-ului pentru ca acesta sa afiseze pagina Workspace, daca nu, atunci controllerul da mai departe un mesaj de eroare care este mai apoi afisat in view, in pagina Log in.
+                </p>
+                <p>
+                    (Fiecare pagina mentionata pana acum, ca spre exemplu log in sau workspace sunt viewuri care sunt afisate ca output userului prin procesarea anumitor date de catre controller luate de model din baza de date.)
+                </p>
+
+                    <img src="https://scontent-otp1-1.xx.fbcdn.net/v/t1.15752-9/57191731_317141795637152_401147162307592192_n.png?_nc_cat=100&_nc_ht=scontent-otp1-1.xx&oh=fa430c650c1441484a87edc8941ef739&oe=5D72883C" style="width: 620px;height: 720px">
+
+                    <p><em>Codul este organizat pe module. Fiecare modul este responsabil pentru obtinerea / formatarea datelor intoarse de API-urile publice. Exemplu de modul:</em></p>
+
+
+
+                        <h3>Metoda &amp; de lucru</h3>
+                        <p><em>  Metodologia Agile</em></p>
+                        <p>Grupul de metode Agile este bazat pe dezvoltarea iterativa si incrementala acolo unde specificatiile si solutiile provin din colaborarea intre echipe organizate individual, dar care au acelasi scop comun.
+                            Aceste metode au la baza 12 principii:</p>
+                        <em>
+                            <p>1. Satisfacerea clientilor, prin livrarea rapida de software utilizabil</p>
+                            <p>2.  Intampinarea modificarii specificatiilor, chiar si tarziu in implementare</p>
+                            <p>3.  Software-ul utilizabil este livrat frecvent (la nivel de saptamani)</p>
+                            <p>4.  Software-ul utilizabil reprezinta principala masura a progresului</p>
+                            <p>5.  Dezvoltare sustinuta, capabila sa pastreze un pas constant</p>
+                            <p>6.  Cooperare apropiata intre dezvoltatori si clienti</p>
+                            <p>7.  Conversatia fata-in-fata este cel mai bun mod de comunicare</p>
+                            <p>8.  Proiectele sunt construite de indivizi motivati, credibili</p>
+                            <p>9.  Simplitate</p>
+                            <p>10. Echipe organizate individual</p>
+                            <p>11. Adaptare la circumstante schimbatoare.</p>
+                            <p>12. Atentia constanta pentru excelenta tehnica si design bun.</p></em>
+                        <img src="http://www.trilex.ro/images/scrum1.gif" style="height: 320px ;width:420px">
+                        <br></br>
+                        <p>SCRUM este un schelet ce contine un set de practici si diferite roluri. Principalele roluri din SCRUM sunt:</p>
+                        <em>
+                            <p>- “Scrum Master” – este cel care mentine procesele</p>
+                            <p>-  “Detinatorul produsului” – cel care reprezinta investitorii si afacerea</p>
+                            <p>-  “Echipa” – un grup de aproximativ 7 oameni ce fac analiza, proiectarea si implementarea</p></em>
+
+                        <p>In timpul fiecarui “sprint” (de obicei cu o durata de 2-4 sapatamani), echipa creaza un increment ce poate fi livrat. Setul de caracteristici ce intra intr-un “sprint” provin din “backlog”-ul proiectului, care reprezinta un set prioritizat de cerinte de nivel inalt ce trebuiesc realizate.  In timpul unei sedinte de planificare a sprint-ului, se stabilesc cerintele ce vor intra in sprint. Cerintele sunt “inghetate” in timpul unui sprint. Sprint-ul trebuie sa se incheie la timp. Daca cerintele nu sunt implementate complet, ele se intorc in backlog-ul proiectului. Dupa terminarea unui sprint, echipa trebuie sa demonstreze functionarea software-ului.</p>
+
+                        <p><b>Avantaje:</b></p>
+
+                        <em>
+                            <p> - Economisirea de timp si bani</p>
+                            <p>- Rapiditatea implementarii si usurinta de a corecta eventualele erori</p>
+                            <p>- Vizibilitate a implementarii proiectului</p>
+                            <p>- Feedback continuu de la client</p>
+                            <p>- Usurinta de a face fata schimbarilor</p></em>
+                        <br></br>
+                        <p><b>Organizarea muncii</b></p>
+                        <p>Sprinturi</p>
+                        <p>Vom lucra in sprinturi de o saptamana. In fiecare sprint se va livra o functionalitate noua, sub forma unui MVP functional.</p>
+                        <p>Task planning / tracking</p>
+                        <p><em>Pentru a urmari progresul taskurilor vom folosi un tool free, ClubHouse (https://clubhouse.io/). Acesta ne va permite sa organizam munca in sprinturi si sa vedem care sunt Milestones si Deliverables. Estimand fiecare story, putem aproxima data completarii unei functionalitati.</em></p>
+                        <img src="https://i.imgur.com/cNjLb9Y.png" style="width: 820px;height: 320px">
+                        <br></br>
+                        
+                    
+                        <p><b> Cum se instaleaza aplicatia</b></p>
+
+                        <p>Pentru a folosi aplicatia, trebuie sa aveti instalat Node (link). Versiunea exacta de Node poate fi gasita in `.nvmrc`.</p>
+
+                        <p>Dupa ce ati instalat Node:</p>
+
+                        <p><em>`npm install`</em></p>
+                        <p><em>`npm start`</em></p>
+
+                        <p>Aplicatia va porni la `http://localhost:3000`.</p>
+
+                        <p>Pentru a porni API-ul, trebuie rulat:</p>
+
+                        <p><em>`node api.js`</em></p>
+
+                        <p><b>Cum puteti contribui</b></p>
+
+                        <p>Dupa ce ati clonat aplicatia local, puteti viziona lista de Trello din care puteti alege unul din taskurile ramase.</p>
+
+
+                    </section>
+</body>
+</html>
+
+
+
