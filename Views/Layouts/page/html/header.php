@@ -12,14 +12,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <span class="header-logo"></span><a class="navbar-home" href="#"><strong>SOFY</strong></a>
+                <span class="header-logo"></span><a class="navbar-home" href="/"><strong>SOFY</strong></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="option selected"><a href="#">Home</a></li>
-                    <li class="option"><a href="/about/index">Features</a></li>
-                    <li class="option"><a href="/about/index">About Us</a></li>
-                    <li class="option"><a href="/contact/index">Contact</a></li>
+                    <li class="option <?= $containerClass == 'homepage' ? 'selected' : '' ?>"><a href="/">Home</a></li>
+                    <li class="option <?= $containerClass == 'features' ? 'selected' : '' ?>"><a href="/about/index">Features</a></li>
+                    <li class="option <?= $containerClass == 'about-us' ? 'selected' : '' ?>"><a href="/about/index">About us</a></li>
+                    <li class="option <?= $containerClass == 'contact'  ? 'selected' : '' ?>"><a href="/contact/index">Contact</a></li>
                     <li class="dropdown" style="float:right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            data-aria-expanded="false"><span class="carety" id="user-account"></span></a>
