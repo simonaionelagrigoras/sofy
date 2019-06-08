@@ -53,6 +53,7 @@ $('document').ready(function(){
     });
 
     jQuery(document).on("change", "#userFile", function() {
+        jQuery('.upload-error').hide();
         var file_data = jQuery("#userFile").prop("files");   // Getting the properties of file from file field
         var existing_files = jQuery('.uploaded-values').length;
         var repo = $('select.available-repos option:selected').val();
@@ -63,9 +64,9 @@ $('document').ready(function(){
 
         form_data.append("repo", repo);
 
-        var file_name = jQuery("#userFile").prop("files")[0].name;
-        var file_type = jQuery("#userFile").prop("files")[0].type;
-        var file_size = jQuery("#userFile").prop("files")[0].size;
+        //var file_name = jQuery("#userFile").prop("files")[0].name;
+        //var file_type = jQuery("#userFile").prop("files")[0].type;
+        //var file_size = jQuery("#userFile").prop("files")[0].size;
 
         if(jQuery('#userFile').val()) {
             //e.preventDefault();
@@ -92,11 +93,21 @@ $('document').ready(function(){
                 },
                 success:function (data){
                     if(data.error){
-                        jQuery('.repo-upload-box .customer-personalization:first-child').after('<p class="upload-error">'+ data.message + '</p>');
+                        jQuery('.repo-upload-box .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
                         jQuery('#loader-icon').hide();
                     }else{
                         jQuery('#loader-icon').hide();
                         jQuery(".preview").append('<div>'+ data.file_uploaded +'<div class="delete_file"></div></div>');
+                    }
+                },
+                error:function (data){
+                    if(data.responseText){
+                        var response = JSON.parse(data.responseText)
+                        jQuery('.repo-upload-box .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
+                        jQuery('#loader-icon').hide();
+                    }else{
+                        jQuery('#loader-icon').hide();
+                        jQuery('.repo-upload-box .customer-personalization:first-child').after('<p class="upload-error">An error occurred</p>');
                     }
                 },
                 resetForm: true

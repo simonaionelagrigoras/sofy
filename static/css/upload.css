@@ -118,3 +118,8 @@ span.upload-text:before{
     position: relative;
     display: inline-block;
 }
+
+.upload-error{
+    color: #e02b27;
+    font-size: 12px;
+}
