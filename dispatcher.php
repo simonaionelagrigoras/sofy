@@ -19,7 +19,11 @@ class Dispatcher
 
             $controller = $this->loadController();
 
-            call_user_func_array([$controller, $this->request->action], $this->request->params);
+            if(!method_exists($controller, $this->request->action)) {
+                throw new Exception("Method does not exist " . get_class($controller) . '::' . $this->request->action);
+            }
+            $params = [$this->request->params];
+            call_user_func_array([$controller, $this->request->action], $params);
         }catch (Exception $e){
             return $e->getMessage();
         }

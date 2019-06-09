@@ -123,3 +123,7 @@ span.upload-text:before{
     color: #e02b27;
     font-size: 12px;
 }
+
+#steps{
+    min-height: 100px;
+}

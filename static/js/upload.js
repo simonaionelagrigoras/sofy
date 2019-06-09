@@ -1,10 +1,10 @@
 $('document').ready(function(){
 
-    function makeGet(url, step, data){
-
+    function makeRequest(url, step, data){
+        var reqType = typeof data != 'undefined' ? 'POST' : 'GET';
         $.ajax({
             url: url,
-            type: 'GET',
+            type: reqType,
             dataType: 'json',
             data: data,
             success: function (response) {
@@ -17,6 +17,12 @@ $('document').ready(function(){
                         break;
                     case 'step2':
                         parseAvailableVersions(response);
+                        break;
+                    case 'step3':
+                        parseAvailableApps(response);
+                        break;
+                    case 'step4':
+                        showUpload(response);
                         break;
                 }
                 return response;
@@ -33,32 +39,76 @@ $('document').ready(function(){
 
     function parseAvailableRepo(repositories)
     {
-        var availableRepositories = '';
-        $.each(repositories, function (index, element) {
-            var radioOption = '<input type="radio" name="repository_name" value="' + element.repository_name + '">'+ element.repository_name + '<br>\n';
-            availableRepositories = availableRepositories + radioOption
-        });
-        $('.available-repos').html(availableRepositories)
-        $('.chose-repo').toggle(300);
-        $('button.next').attr('data-step', 2);
-        $('button.next').show();
+        if(typeof repositories != 'undefined' && repositories.length) {
+            $.each(repositories, function (index, element) {
+                var radioBtn = '<input type="radio" name="repository_name" value="' + element.repository_name + '">';
+                $('.available-repos').append(
+                    $('<p>')
+                        .addClass("repo-option")
+                        .append([radioBtn, $('<span/>',{ "text":element.repository_name })])
+                );
+            });
+            $('.chose-repo').toggle(300);
+            $('button.next').attr('data-step', 2);
+            $('button.next').show();
+        }
     }
 
     function parseAvailableVersions(versions)
     {
-        var availableVersions = '';
-        /*$.each(repositories, function (index, element) {
-            var radioOption = '<input type="radio" name="repository_name" value="' + element.repository_name + '">'+ element.repository_name + '<br>\n';
-            availableRepositories = availableRepositories + radioOption
-        });
-        $('.available-repos').html(availableRepositories)
-        $('.chose-repo').toggle(300);*/
-        $('button.next').attr('data-step', 3);
-        $('button.next').show();
+        if(typeof versions != 'undefined' && versions.length){
+            $.each(versions, function (index, element) {
+                var radioBtn = $('<input type="radio" name="repository_version" value="' + element.version + '" />');
+                $('.available-versions').append(
+                    $('<p>')
+                        .addClass("repo-version-option")
+                        .append([radioBtn, $('<span/>',{ "text": element.version })])
+                );
+            });
+
+            $('.choose-version').toggle(300);
+            $('.step-1').hide();
+            $('button.next').attr('data-step', 3);
+            $('button.next').show();
+        }
+    }
+
+    function parseAvailableApps(apps)
+    {
+        if(typeof apps != 'undefined' ){
+            $.each(apps, function (index, element) {
+                var radioBtn = '<input type="radio" name="repository_app" value="' + element + '" />';
+                $('.available-apps').append(
+                    $('<p>')
+                        .addClass("repo-app-option")
+                        .append([radioBtn, $('<span/>',{ "text": element })])
+                );
+            });
+            $('.choose-app').toggle(300);
+            $('.step-2').hide();
+            $('button.next').attr('data-step', 4);
+            $('button.next').show();
+        }
+    }
+
+    function showUpload(response)
+    {
+        if(typeof response != 'undefined' ){
+            if(response.new_app){
+                var newApp = '<input type="radio" name="repository_app" value="' + response.new_app + '">'+ response.new_app + '<br>\n';
+                $(newApp).insertAfter( $('.available-apps input[name="repository_app"]:last-of-type') );
+                $('input[name="repository_app"][value="' + response.new_app + '"]').attr('checked', true);
+                $("input[name='new_app']").val('');
+            }
+            $('.upload-app').toggle(300);
+            $('.step-3').hide();
+            $('button.next').attr('data-step', 5);
+            $('button.next').show();
+        }
     }
 
     $(document).on('click', '#create-repo-btn', function(){
-        makeGet('/repositories/getAvailableRepositories', 'step1');
+        makeRequest('/repositories/getAvailableRepositories', 'step1');
     });
 
     $(document).on('click', 'button.next', function(el){
@@ -68,10 +118,20 @@ $('document').ready(function(){
                 break;
             case 2:
                 var repoName = $("input[name='repository_name']:checked").val();
-                makeGet('/repositories/getAvailableVersions', 'step2', {'respository_name': repoName});
+                makeRequest('/repositories/getAvailableVersions/repository_name/' + repoName, 'step2');
                 break;
-            case "Apple":
-                text = "How you like them apples?";
+            case 3:
+                var repoName    = $("input[name='repository_name']:checked").val();
+                var repoVersion = $("input[name='repository_version']:checked").val();
+                makeRequest('/repositories/getAvailableApps/?repository_version=' + repoVersion + '&repository_name=' + repoName, 'step3');
+                break;
+            case 4:
+                var repoApp = typeof $("input[name='repository_app']:checked").val() != "undefined" ? $("input[name='repository_app']:checked").val() != "undefined" : '';
+                var newApp  = $("input[name='new_app']").val();
+                var repoName    = $("input[name='repository_name']:checked").val();
+                var repoVersion = $("input[name='repository_version']:checked").val();
+                var postData = {'repository_app': repoApp, 'new_app': newApp, 'repository_name': repoName, 'repository_version':repoVersion};
+                makeRequest('/repositories/chooseApp', 'step4', postData);
                 break;
             default:
                 text = "I have never heard of that fruit...";
@@ -80,12 +140,6 @@ $('document').ready(function(){
     $(document).on('click', 'input[name="repository_name"]', function(el){
         $('button.next').prop("disabled", false)
     });
-    //form validation
-    $('#account-repository').on('click', function(e){
-        $('.profile').hide();
-        $('.repo-upload').show();
-
-    })
 
     $('body').on('click','p.folder>a', function(e){
         e.preventDefault();
@@ -123,7 +177,7 @@ $('document').ready(function(){
             $('.chose-repo p.error').show();
         }else{
             $('.chose-repo p.error').hide();
-            $('.repo-upload-box').toggle(200);
+            $('.upload-app').toggle(200);
             $('select.available-repos').attr('disabled', 'disabled');
         }
     });
@@ -169,7 +223,7 @@ $('document').ready(function(){
                 },
                 success:function (data){
                     if(data.error){
-                        $('.repo-upload-box .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
+                        $('.upload-app .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
                         $('#loader-icon').hide();
                     }else{
                         $('#loader-icon').hide();
@@ -179,11 +233,11 @@ $('document').ready(function(){
                 error:function (data){
                     if(data.responseText){
                         var response = JSON.parse(data.responseText)
-                        $('.repo-upload-box .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
+                        $('.upload-app .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
                         $('#loader-icon').hide();
                     }else{
                         $('#loader-icon').hide();
-                        $('.repo-upload-box .customer-personalization:first-child').after('<p class="upload-error">An error occurred</p>');
+                        $('.upload-app .customer-personalization:first-child').after('<p class="upload-error">An error occurred</p>');
                     }
                 },
                 resetForm: true

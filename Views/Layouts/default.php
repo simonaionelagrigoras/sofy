@@ -8,6 +8,11 @@
     <script src="<?= $baseUrl ?>/static/js/main.js"></script>
     <!-- Used for responsive design in order to control dimensions and scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="<?= $baseUrl ?>/static/media/images/favicon.png" />
+    <meta name="theme-color" content="#000">
+
+
+
 </head>
 <body>
 <?php require_once('page\html\header.php') ?>

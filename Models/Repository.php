@@ -33,4 +33,23 @@ class Repository extends Model
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public function getVersions($repoName)
+    {
+        $sql = "SELECT version FROM `repository` WHERE name = '" . $repoName . "'";
+        $query = Database::getBdd()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function getRepoByVersion($version)
+    {
+        $sql = "SELECT name FROM `repository` WHERE version = '" . $version . "'";
+        $query = Database::getBdd()->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result->name;
+    }
+
 }

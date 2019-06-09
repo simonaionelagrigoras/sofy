@@ -11,33 +11,51 @@
         </div>
         <div class="create-repo">
             <a id="create-repo-btn" class="btn btn-md">Create repository</a>
+            <div id="steps">
+                <div class="chose-repo hidden step-1">
+                    <div class="available-repos">
 
-            <div class="chose-repo hidden step-1">
-                <div class="available-repos">
-
+                    </div>
+    <!--                <span class="available-repos-select">  <span tooltip="Click to select repository" class="tooltip"></span></span>-->
+                    <p class="error hidden">Please select a repository</p>
                 </div>
-<!--                <span class="available-repos-select">  <span tooltip="Click to select repository" class="tooltip"></span></span>-->
-                <p class="error hidden">Please select a repository</p>
-            </div>
 
-            <div class="repo-upload-box hidden step-2">
-                <div class="fileUpload btn-primary">
-                    <span class="upload-text">Select files to upload</span>
-                    <input name="userFile" id="userFile" multiple="" max="3" type="file" class="upload">
+                <div class="choose-version hidden step-2">
+                    <div class="available-versions">
+
+                    </div>
+                    <p class="error hidden">Please select a repository</p>
                 </div>
-                <button  type="button" class="hidden" id="delete-file">Delete File</button>
 
-                <!--<div id="progress-div"><div id="progress-bar"></div></div>-->
-                <div id="targetLayer"></div>
-                <div class="uploaded_files_elements"></div>
+                <div class="choose-app hidden step-3">
+                    <div class="available-apps">
+
+                    </div>
+                    <label>Create a new application</label>
+                    <input type="text" name="new_app" />
+                    <p class="error hidden">Please select a repository</p>
+                </div>
+
+                <div class="upload-app hidden step-4">
+                    <div class="fileUpload btn-primary">
+                        <span class="upload-text">Select files to upload</span>
+                        <input name="userFile" id="userFile" multiple="" max="1" type="file" class="upload">
+                    </div>
+                    <button  type="button" class="hidden" id="delete-file">Delete File</button>
+
+                    <!--<div id="progress-div"><div id="progress-bar"></div></div>-->
+                    <div id="targetLayer"></div>
+                    <div class="uploaded_files_elements"></div>
+                </div>
+
+                <div class="preview">
+                    <div id="loader-icon" style="display: none;"><img src="<?= $baseUrl?>/static/media/images/loader.gif"></div>
+                    <div><div class="delete_file"></div></div>
+                </div>
             </div>
 
-            <div class="preview">
-                <div id="loader-icon" style="display: none;"><img src="<?= $baseUrl?>/static/media/images/loader.gif"></div>
-                <div><div class="delete_file"></div></div>
-            </div>
-
-            <button data-step="1" class="hidden next" disabled="disabled">Next</button>
+            <button id="prev" data-step="1" class="hidden prev" disabled="disabled">Previous</button>
+            <button id="next" data-step="1" class="hidden next" disabled="disabled">Next</button>
         </div>
     </div>
 </div>
