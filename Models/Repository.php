@@ -52,4 +52,13 @@ class Repository extends Model
         return $result->name;
     }
 
+    public function getRepoIdByVersion($version)
+    {
+        $sql = "SELECT entity_id FROM `repository` WHERE version = '" . $version . "'";
+        $query = Database::getBdd()->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result->entity_id;
+    }
+
 }

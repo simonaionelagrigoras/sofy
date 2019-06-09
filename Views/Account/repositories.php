@@ -39,7 +39,8 @@
                 <div class="upload-app hidden step-4">
                     <div class="fileUpload btn-primary">
                         <span class="upload-text">Select files to upload</span>
-                        <input name="userFile" id="userFile" multiple="" max="1" type="file" class="upload">
+                        <input name="userFile" id="userFile" multiple="" max="1" type="file" class="upload" />
+                        <input name="repository_id" id="repository_id" type="hidden"  />
                     </div>
                     <button  type="button" class="hidden" id="delete-file">Delete File</button>
 
@@ -52,6 +53,8 @@
                     <div id="loader-icon" style="display: none;"><img src="<?= $baseUrl?>/static/media/images/loader.gif"></div>
                     <div><div class="delete_file"></div></div>
                 </div>
+
+                <input type="hidden" name="file_for_repo" />
             </div>
 
             <button id="prev" data-step="1" class="hidden prev" disabled="disabled">Previous</button>

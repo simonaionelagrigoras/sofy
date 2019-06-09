@@ -24,6 +24,9 @@ $('document').ready(function(){
                     case 'step4':
                         showUpload(response);
                         break;
+                    case 'step5':
+                        showCreatedRepo(response);
+                        break;
                 }
                 return response;
             },
@@ -37,6 +40,16 @@ $('document').ready(function(){
         });
     }
 
+    function updateStep(currentStep, nextStep, prevStep)
+    {
+        $('.step-' + currentStep).toggle(300);
+        $('button.next').attr('data-step', nextStep);
+        $('button.next').show();
+        if(typeof prevStep != 'undefined'){
+            $('.step-' + prevStep).hide();
+        }
+    }
+
     function parseAvailableRepo(repositories)
     {
         if(typeof repositories != 'undefined' && repositories.length) {
@@ -48,9 +61,7 @@ $('document').ready(function(){
                         .append([radioBtn, $('<span/>',{ "text":element.repository_name })])
                 );
             });
-            $('.chose-repo').toggle(300);
-            $('button.next').attr('data-step', 2);
-            $('button.next').show();
+            updateStep(1, 2);
         }
     }
 
@@ -66,10 +77,7 @@ $('document').ready(function(){
                 );
             });
 
-            $('.choose-version').toggle(300);
-            $('.step-1').hide();
-            $('button.next').attr('data-step', 3);
-            $('button.next').show();
+            updateStep(2, 3, 1);
         }
     }
 
@@ -84,10 +92,8 @@ $('document').ready(function(){
                         .append([radioBtn, $('<span/>',{ "text": element })])
                 );
             });
-            $('.choose-app').toggle(300);
-            $('.step-2').hide();
-            $('button.next').attr('data-step', 4);
-            $('button.next').show();
+
+            updateStep(3, 4, 2);
         }
     }
 
@@ -95,15 +101,30 @@ $('document').ready(function(){
     {
         if(typeof response != 'undefined' ){
             if(response.new_app){
-                var newApp = '<input type="radio" name="repository_app" value="' + response.new_app + '">'+ response.new_app + '<br>\n';
-                $(newApp).insertAfter( $('.available-apps input[name="repository_app"]:last-of-type') );
+                var radioBtn = '<input type="radio" name="repository_app" value="' + response.new_app + '">';
+                $('.available-apps').append(
+                    $('<p>')
+                        .addClass("repo-app-option")
+                        .append([radioBtn, $('<span/>',{ "text": response.new_app })])
+                );
                 $('input[name="repository_app"][value="' + response.new_app + '"]').attr('checked', true);
                 $("input[name='new_app']").val('');
             }
-            $('.upload-app').toggle(300);
-            $('.step-3').hide();
-            $('button.next').attr('data-step', 5);
-            $('button.next').show();
+            $('#repository_id').val(response.repository_id);
+
+            updateStep(4, 5, 3);
+        }
+    }
+
+    function showCreatedRepo(response)
+    {
+        if(typeof response != 'undefined' ){
+            if(response.message){
+                $('.create-repo').append( $('<p>'), {"text":response.message});
+            }
+            $('#steps').hide();
+            $('button.next').attr('data-step', 1).hide();
+            $('button.prev').attr('data-step', 1).hide();
         }
     }
 
@@ -132,6 +153,13 @@ $('document').ready(function(){
                 var repoVersion = $("input[name='repository_version']:checked").val();
                 var postData = {'repository_app': repoApp, 'new_app': newApp, 'repository_name': repoName, 'repository_version':repoVersion};
                 makeRequest('/repositories/chooseApp', 'step4', postData);
+                break;
+
+            case 5:
+                var file   =  $("input[name='file_for_repo']").val();
+                var repoId = $("#repository_id").val();
+                var postData = {'repository_id': repoId, 'repository_file': file};
+                makeRequest('/repositories/createRepo', 'step5', postData);
                 break;
             default:
                 text = "I have never heard of that fruit...";
@@ -186,13 +214,19 @@ $('document').ready(function(){
         $('.upload-error').hide();
         var file_data = $("#userFile").prop("files");   // Getting the properties of file from file field
         var existing_files = $('.uploaded-values').length;
-        var repo = $('select.available-repos option:selected').val();
+        var repoId      = $("#repository_id").val();
+        var repoName    = $("input[name='repository_name']:checked").val();
+        var repoVersion = $("input[name='repository_version']:checked").val();
+        var repoApp     = $("input[name='repository_app']:checked").val();
 
         var form_data = new FormData();
 
-        form_data.append('file',  $('#userFile')[0].files[0]);
+        form_data.append("repository_id", repoId);
+        form_data.append("repository_name", repoName);
+        form_data.append("repository_version", repoVersion);
+        form_data.append("repository_app", repoApp);
 
-        form_data.append("repo", repo);
+        form_data.append('file',  $('#userFile')[0].files[0]);
 
         //var file_name = $("#userFile").prop("files")[0].name;
         //var file_type = $("#userFile").prop("files")[0].type;
@@ -205,14 +239,14 @@ $('document').ready(function(){
                 $(".upload-error").hide();
             }
             $.ajax({
-                url: "app/upload",
+                url: "/repositories/uploadApp",
                 dataType: 'json',
                 cache: false,
                 /*enctype: 'multipart/form-data',*/
                 contentType: false,
                 processData: false,
                 data: form_data,
-                type: 'post',
+                type: 'POST',
                 target:   '#targetLayer',
                 beforeSubmit: function() {
                     $("#progress-bar").width('0%');
@@ -228,7 +262,9 @@ $('document').ready(function(){
                     }else{
                         $('#loader-icon').hide();
                         $(".preview").append('<div>'+ data.file_uploaded +'<div class="delete_file"></div></div>');
+                        $("input[name='file_for_repo']").val(data.file_uploaded);
                     }
+                    $('#userFile').reset();
                 },
                 error:function (data){
                     if(data.responseText){
@@ -239,10 +275,9 @@ $('document').ready(function(){
                         $('#loader-icon').hide();
                         $('.upload-app .customer-personalization:first-child').after('<p class="upload-error">An error occurred</p>');
                     }
+                    $('#userFile').reset();
                 },
-                resetForm: true
             });
-            return false;
         }
 
     })
