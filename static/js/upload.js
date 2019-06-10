@@ -44,6 +44,7 @@ $('document').ready(function(){
     {
         $('.step-' + currentStep).toggle(300);
         $('button.next').attr('data-step', nextStep);
+        $('button.next').attr('disabled', 'disabled');
         $('button.next').show();
         if(typeof prevStep != 'undefined'){
             $('.step-' + prevStep).hide();
@@ -130,10 +131,14 @@ $('document').ready(function(){
 
     $(document).on('click', '#create-repo-btn', function(){
         makeRequest('/repositories/getAvailableRepositories', 'step1');
+        $('.progress').removeClass('hidden').addClass('visible');
     });
 
     $(document).on('click', 'button.next', function(el){
         var step = parseInt($(el.target).attr('data-step'));
+        $('button.prev').prop("disabled", false);
+        $('button.prev').show();
+        nextStep();
         switch(step) {
             case 1:
                 break;
@@ -154,7 +159,6 @@ $('document').ready(function(){
                 var postData = {'repository_app': repoApp, 'new_app': newApp, 'repository_name': repoName, 'repository_version':repoVersion};
                 makeRequest('/repositories/chooseApp', 'step4', postData);
                 break;
-
             case 5:
                 var file   =  $("input[name='file_for_repo']").val();
                 var repoId = $("#repository_id").val();
@@ -162,12 +166,24 @@ $('document').ready(function(){
                 makeRequest('/repositories/createRepo', 'step5', postData);
                 break;
             default:
-                text = "I have never heard of that fruit...";
         }
     });
+
     $(document).on('click', 'input[name="repository_name"]', function(el){
-        $('button.next').prop("disabled", false)
+        $('button.next').prop("disabled", false);
     });
+
+    $(document).on('change', 'input[type="radio"]', function(el){
+        $('button.next').prop("disabled", false);
+    });
+
+    $(document).on('keyup','input[name="new_app"]', function(){
+        if ($(this).val())
+        {
+            $('button.next').prop("disabled", false);
+        }
+    });
+
 
     $('body').on('click','p.folder>a', function(e){
         e.preventDefault();
@@ -228,9 +244,6 @@ $('document').ready(function(){
 
         form_data.append('file',  $('#userFile')[0].files[0]);
 
-        //var file_name = $("#userFile").prop("files")[0].name;
-        //var file_type = $("#userFile").prop("files")[0].type;
-        //var file_size = $("#userFile").prop("files")[0].size;
 
         if($('#userFile').val()) {
             //e.preventDefault();
@@ -251,35 +264,81 @@ $('document').ready(function(){
                 beforeSubmit: function() {
                     $("#progress-bar").width('0%');
                 },
-                uploadProgress: function (event, position, total, percentComplete){
-                    $("#progress-bar").width(percentComplete + '%');
-                    $("#progress-bar").html('<div id="progress-status">' + percentComplete +' %</div>')
-                },
                 success:function (data){
                     if(data.error){
                         $('.upload-app .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
-                        $('#loader-icon').hide();
                     }else{
-                        $('#loader-icon').hide();
                         $(".preview").append('<div>'+ data.file_uploaded +'<div class="delete_file"></div></div>');
                         $("input[name='file_for_repo']").val(data.file_uploaded);
+                        nextStep();
+                        $('button.next').prop("disabled", false)
                     }
-                    $('#userFile').reset();
                 },
                 error:function (data){
                     if(data.responseText){
                         var response = JSON.parse(data.responseText)
                         $('.upload-app .fileUpload').after('<p class="upload-error">'+ data.error + '</p>').show();
-                        $('#loader-icon').hide();
                     }else{
-                        $('#loader-icon').hide();
                         $('.upload-app .customer-personalization:first-child').after('<p class="upload-error">An error occurred</p>');
                     }
-                    $('#userFile').reset();
+                    //$('#userFile').reset();
                 },
             });
         }
 
     })
+
+    var step = 'step1';
+
+    const step1 = document.getElementById('progress-step1');
+    const step2 = document.getElementById('progress-step2');
+    const step3 = document.getElementById('progress-step3');
+    const step4 = document.getElementById('progress-step4');
+
+    function nextStep() {
+        if (step === 'step1') {
+            step = 'step2';
+            step1.classList.remove("is-active");
+            step1.classList.add("is-complete");
+            step2.classList.add("is-active");
+
+        } else if (step === 'step2') {
+            step = 'step3';
+            step2.classList.remove("is-active");
+            step2.classList.add("is-complete");
+            step3.classList.add("is-active");
+
+        } else if (step === 'step3') {
+            step = 'step4d';
+            step3.classList.remove("is-active");
+            step3.classList.add("is-complete");
+            step4.classList.add("is-active");
+
+        } else if (step === 'step4d') {
+            step = 'complete';
+            step4.classList.remove("is-active");
+            step4.classList.add("is-complete");
+
+        } else if (step === 'complete') {
+            step = 'step1';
+            step4.classList.remove("is-complete");
+            step3.classList.remove("is-complete");
+            step2.classList.remove("is-complete");
+            step1.classList.remove("is-complete");
+            step1.classList.add("is-active");
+        }
+    }
+
+    var $loading = $('.loading-mask').hide();
+    //Attach the event handler to any element
+    $(document)
+        .ajaxStart(function () {
+            //ajax request went so show the loading image
+            $loading.show();
+        })
+        .ajaxStop(function () {
+            //got response so hide the loading image
+            $loading.hide();
+        });
 
 });

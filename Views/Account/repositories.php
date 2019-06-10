@@ -1,4 +1,3 @@
-
 <div class="col-sm-3" id="account-navigation">
     <?php require_once ('html\left_navigation.php')?>
 </div>
@@ -11,7 +10,21 @@
         </div>
         <div class="create-repo">
             <a id="create-repo-btn" class="btn btn-md">Create repository</a>
+            <div class="progress hidden">
+                <div class="progress-track"></div>
+                <div class="progress-step" id="progress-step1">Select OS</div>
+                <div class="progress-step" id="progress-step2">Select Version</div>
+                <div class="progress-step" id="progress-step3">Select Software</div>
+                <div class="progress-step" id="progress-step4">Upload File</div>
+                <div class="progress-step" id="progress-step5">Create Repository</div>
+            </div>
+            <div class="loading-mask hidden" data-role="loader">
+                <div class="loader">
+                    <img alt="Se incarca..." src="../static/media/images/loadloop.gif">
+                </div>
+            </div>
             <div id="steps">
+
                 <div class="chose-repo hidden step-1">
                     <div class="available-repos">
 
@@ -50,7 +63,6 @@
                 </div>
 
                 <div class="preview">
-                    <div id="loader-icon" style="display: none;"><img src="<?= $baseUrl?>/static/media/images/loader.gif"></div>
                     <div><div class="delete_file"></div></div>
                 </div>
 
