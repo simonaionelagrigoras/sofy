@@ -33,6 +33,7 @@ class Controller
         $baseUrl    = isset($_SERVER['HTTPS']) ? 'https://' . $_SERVER['HTTP_HOST'] : 'http://' . $_SERVER['HTTP_HOST'];
         $isLoggedIn = is_null($this->session->getCurrentUser()) ? false : true;
         $userName   = $this->session->getCurrentUserName();
+        $accMenu    = $controllerName == 'account' ? $this->getMenuSelected($filename) : '';
 
         ob_start();
         require(ROOT . "Views/" . ucfirst($controllerName) . '/' . $filename . '.php');
@@ -63,6 +64,24 @@ class Controller
         }
 
         return $class;
+    }
+
+    protected function getMenuSelected($action)
+    {
+        switch($action){
+            case 'index':
+                $currentMenuOption = 'profile';
+                break;
+            case 'repositories':
+            case 'settings':
+            case 'messages':
+                $currentMenuOption = $action;
+                break;
+            default:
+                $currentMenuOption = 'profile';
+        }
+
+        return $currentMenuOption;
     }
 
 }

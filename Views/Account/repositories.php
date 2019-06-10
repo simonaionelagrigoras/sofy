@@ -10,13 +10,14 @@
         </div>
         <div class="create-repo">
             <a id="create-repo-btn" class="btn btn-md">Create repository</a>
-            <div class="progress hidden">
+            <div class="create-repo-container hidden">
+            <div class="progress visible">
                 <div class="progress-track"></div>
                 <div class="progress-step" id="progress-step1">Select OS</div>
                 <div class="progress-step" id="progress-step2">Select Version</div>
                 <div class="progress-step" id="progress-step3">Select Software</div>
                 <div class="progress-step" id="progress-step4">Upload File</div>
-                <div class="progress-step" id="progress-step5">Create Repository</div>
+                <div class="progress-step" id="progress-step5">Add Tags</div>
             </div>
             <div class="loading-mask hidden" data-role="loader">
                 <div class="loader">
@@ -25,7 +26,7 @@
             </div>
             <div id="steps">
 
-                <div class="chose-repo hidden step-1">
+                <div class="chose-repo repo-step step-1">
                     <div class="available-repos">
 
                     </div>
@@ -33,14 +34,14 @@
                     <p class="error hidden">Please select a repository</p>
                 </div>
 
-                <div class="choose-version hidden step-2">
+                <div class="choose-version repo-step step-2">
                     <div class="available-versions">
 
                     </div>
                     <p class="error hidden">Please select a repository</p>
                 </div>
 
-                <div class="choose-app hidden step-3">
+                <div class="choose-app repo-step step-3">
                     <div class="available-apps">
 
                     </div>
@@ -49,21 +50,21 @@
                     <p class="error hidden">Please select a repository</p>
                 </div>
 
-                <div class="upload-app hidden step-4">
+                <div class="upload-app repo-step step-4">
                     <div class="fileUpload btn-primary">
                         <span class="upload-text">Select files to upload</span>
                         <input name="userFile" id="userFile" multiple="" max="1" type="file" class="upload" />
                         <input name="repository_id" id="repository_id" type="hidden"  />
                     </div>
                     <button  type="button" class="hidden" id="delete-file">Delete File</button>
-
-                    <!--<div id="progress-div"><div id="progress-bar"></div></div>-->
                     <div id="targetLayer"></div>
                     <div class="uploaded_files_elements"></div>
                 </div>
 
-                <div class="preview">
-                    <div><div class="delete_file"></div></div>
+                <div class="add-tags repo-step step-5">
+                    <p class="uploaded_file"></p>
+                    <p>Please set the tags for your repository separated by comma (,)</p>
+                    <input type="text" name="repository_tags" />
                 </div>
 
                 <input type="hidden" name="file_for_repo" />
@@ -71,6 +72,7 @@
 
             <button id="prev" data-step="1" class="hidden prev" disabled="disabled">Previous</button>
             <button id="next" data-step="1" class="hidden next" disabled="disabled">Next</button>
+            </div>
         </div>
     </div>
 </div>

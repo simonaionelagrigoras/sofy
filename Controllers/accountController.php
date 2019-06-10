@@ -27,4 +27,11 @@ class accountController extends Controller
     {
         $this->render("messages");
     }
+
+    function logout()
+    {
+        $this->session->logoutUser();
+        header("Location: " . WEBROOT);
+    }
+
 }

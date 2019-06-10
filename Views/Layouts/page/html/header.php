@@ -24,13 +24,14 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            data-aria-expanded="false"><span class="carety" id="user-account"></span></a>
                         <ul class="dropdown-menu">
-                            <?php if (!$userIsLoggedIn):?>
+                            <?php if (!$isLoggedIn):?>
                                 <li><a href="/user/login">Login</a></li>
                                 <li><a href="/user/login">Registration</a></li>
                             <?php else:?>
-                                <li><a href="#">My account</a></li>
-                                <li><a href="#">My Repositories</a></li>
-                                <li><a href="#">Personal Data</a></li>
+                                <li><a href="/account/index">My account</a></li>
+                                <li><a href="/account/repositories">My Repositories</a></li>
+                                <li><a href="/account/settings">Personal Data</a></li>
+                                <li><a href="/account/logout">Logout</a></li>
                             <?php endif?>
                         </ul>
                     </li>

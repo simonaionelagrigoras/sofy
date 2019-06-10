@@ -75,22 +75,13 @@ p.folder>a:hover{
     position: relative;
     display: inline-block;
 }
-.available-repos-select{
-    cursor: pointer;
-}
-.available-repos-select:before{
-    content: "";
-    width: 18px;
-    height: 18px;
-    background-image: url(../media/images/select.png);
-    background-repeat: no-repeat;
-    background-size: 18px 18px;
-    top: 5px;
-    left: 5px;
-    position: relative;
-    display: inline-block;
-}
 
+.repo-step{
+    display: none;
+}
+.repo-step:active{
+    display: block;
+}
 [tooltip]::after {
     content: attr(tooltip);
     position: relative;

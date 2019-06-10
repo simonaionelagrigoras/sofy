@@ -23,7 +23,6 @@ class repositoriesController extends Controller
 
    public  function getList()
     {
-        $this->session->loginUser(1, 'test');
         $userId = $this->session->getCurrentUser();
         $response = $this->userRepo->getUserRepositories($userId);
         echo json_encode($response);
@@ -129,7 +128,9 @@ class repositoriesController extends Controller
         }
 
         $userId = $this->session->getCurrentUser();
-        $this->userRepo->create($userId, $repoId, $params['repository_file'], 34);
+        $tags = isset($params['repository_tags']) && strlen(trim($params['repository_tags'])) ? explode(',', trim($params['repository_tags'])) : null;
+        $parsedTags = !is_null($tags) ? json_encode($tags) : null;
+        $this->userRepo->create($userId, $repoId, $params['repository_file'], 34, json_encode($parsedTags));
         $result = ['success' => true, 'message' => "Application repository successfully created"];
         echo json_encode($result);
     }
