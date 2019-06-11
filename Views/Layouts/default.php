@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <title>Sofy</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/themes/default/style.min.css" />
     <link rel="stylesheet" href="<?= $baseUrl ?>/static/css/main.css" />
     <link rel="stylesheet" href="<?= $baseUrl ?>/static/css/upload.css" />
     <script src="<?= $baseUrl ?>/static/js/main.js"></script>

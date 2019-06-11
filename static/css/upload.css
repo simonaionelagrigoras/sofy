@@ -14,21 +14,10 @@ body>.loading-mask {
 .loading-mask .loader>img {
     width: 100px;
 }
-p.folder:before {
-    content: "";
-    width: 18px;
-    height: 18px;
-    background-image: url(../media/images/folder.jpg);
-    background-repeat: no-repeat;
-    background-size: 18px 18px;
-    top: 5px;
-    right: 5px;
-    position: relative;
-    display: inline-block;
+.repo-list{
+    height: 200px;
 }
-p.folder>a:hover{
-    cursor: pointer;
-}
+
 .fileUpload.btn.btn-primary {
     color: #333;
     width: 150px;
@@ -60,8 +49,13 @@ p.folder>a:hover{
     filter: alpha(opacity=0);
 }
 
-#create-repo-btn{
+
+#create-repo-btn, #show-repos{
     padding: 6px 0px;
+    width: 100%;
+    text-align: left;
+    background-color: #ccc;
+    margin:2px 0px;
 }
 #create-repo-btn:before {
     content: "";
@@ -110,6 +104,9 @@ span.tooltip {
 }
 .available-repos{
     font-size: 13px;
+}
+.repo-list{
+    display: none;
 }
 input[type=radio]:checked::after {
     content: '';

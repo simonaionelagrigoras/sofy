@@ -473,4 +473,9 @@ $('document').ready(function(){
         }
     });
 
+    $(document).on('click', '#show-repos', function(){
+       $('.repo-list').toggle(300);
+    });
+
+
 });

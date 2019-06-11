@@ -3,10 +3,12 @@
 </div>
 <div class="col-sm-9">
     <div class="repo-upload">
-        <p>Your repositories</p>
-        <div class="existent-repo">
-            <p class="folder"><a href="repo/centos-2">centos-2</a></p>
-            <p class="folder"><a href="repo/centos-3">centos-3</a></p>
+
+        <a id="show-repos" class="btn btn-md">Your repositories</a>
+        <div class="repo-list">
+            <div id="existent-repo">
+        </div>
+
         </div>
         <div class="create-repo">
             <a id="create-repo-btn" class="btn btn-md">Create repository</a>
@@ -21,7 +23,7 @@
             </div>
             <div class="loading-mask hidden" data-role="loader">
                 <div class="loader">
-                    <img alt="Se incarca..." src="../static/media/images/loadloop.gif">
+                    <img alt="Se incarca..." src="/static/media/images/loadloop.gif">
                 </div>
             </div>
             <div id="steps">
@@ -78,34 +80,11 @@
 </div>
 <script type="text/javascript">
     $('document').ready(function() {
-        function getUserRepositories() {
-            $.ajax({
-                url: '/repositories/getList',
-                type: 'POST',
-                dataType: 'json',
-                success: function (response) {
-                    var result = '';
-
-                    if (typeof response.error != 'undefined') {
-                        alert(response.error);
-                    }
-                    $.each(response, function (index, element) {
-                        console.log(element);
-                        $('.existent-repo')
-                    })
-                },
-                error: function (response) {
-                    var result = '';
-                    response = response.responseJSON;
-
-                    if (typeof response.error != 'undefined') {
-                        alert(response.error);
-                    }
-                }
-            });
-        }
-        getUserRepositories();
 
     });
 </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/jstree.min.js"></script>
+
+<script src="<?= $baseUrl ?>/static/js/createJsonTree.js"></script>
 <script src="<?= $baseUrl ?>/static/js/upload.js"></script>
+

@@ -64,6 +64,37 @@ function createJsonTree(jsonData, containerId) {
     });
 }
 
+function getUserRepositories() {
+    $.ajax({
+        url: '/repositories/getList',
+        type: 'POST',
+        dataType: 'json',
+        success: function (response) {
+            var result = '';
+
+            if (typeof response.error != 'undefined') {
+                alert(response.error);
+            }
+            createJsonTree(response, "#existent-repo");
+            $.each(response, function (index, element) {
+                console.log(element);
+                $('#existent-repo');
+
+            })
+        },
+        error: function (response) {
+            var result = '';
+            response = response.responseJSON;
+
+            if (typeof response.error != 'undefined') {
+                alert(response.error);
+            }
+        }
+    });
+}
+getUserRepositories();
+
+
 $(function () {
     const json = [
         {
