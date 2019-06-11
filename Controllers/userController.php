@@ -58,7 +58,7 @@ class userController extends Controller
 		if (!isset($validation['error']))
 		{
 			$password = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
-			if ($this->user->create($_POST["name"], $_POST["email"], $_POST["name"], $password))
+			if ($this->user->create($_POST["name"], $_POST["email"], $password))
 			{
 				$this->loginPost($_POST["email"], trim($_POST['password']));
 			}
