@@ -20,6 +20,39 @@ button, input, select, textarea {
     min-height: 400px;
     overflow: auto;
 }
+.container.terms .content, .container.privacy .content, .container.help .content{
+    padding: 10px 20px;
+}
+.container.help a{
+    font-weight: bold;
+    color: #3FB721;
+}
+.container.homepage{
+    background-color: #000000;
+    color: #3FB721;
+    word-wrap: break-word;
+    font-family: Terminus,Consolas,Profont,"Andale Mono",Monaco,Inconsolata,Inconsolata-g, Unifont,Lime,"ClearlyU PUA",Clean,"DejaVu Sans Mono","Lucida Console", "Bitstream Vera Sans Mono",Freemono,"Liberation Mono",Dina,Anka,Droid Sans Mono, Anonymous Pro,Proggy fonts,Envy Code R,Gamow,Courier,"Courier New",Terminal,monospace;
+    font-weight: 400;
+    font-size: 14px;
+    font: Monospaced;
+}
+.container.homepage::before{
+    display: none;
+}
+.container.homepage .home{
+    padding: 10px 20px;
+}
+.container.homepage .home .left{
+    float: left;
+}
+.container.homepage .home .right{
+    margin-right: 20px;
+    margin-top: 80px;
+}
+.container.homepage a{
+    font-weight: bold;
+    color: #4FF925;
+}
 
 #header{
 
