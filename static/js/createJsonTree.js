@@ -1,13 +1,51 @@
+function downloadFile(repoId, path) {
+    const url = `http://sofy.local/${repoId}/${path}`;
+    let link = document.createElement('a');
+
+    document.body.appendChild(link);
+
+    link.href = url;
+    link.click();
+}
+
+function deleteFile(repoId, path) {
+    console.log('Deleting', repoId, path);
+}
+
 function createJsonTree(jsonData, containerId) {
     // jsonData = [ { }, { } ]
     // containerId = "#container"
+
+    // 1. Adaugat iconite din font awesome (3.1.0) pentru noduri (V)
+    // 2. Posibilitatea de delete a unui fisier.
+    //      Adaugat o iconita de delete repositories
+    //      La delete se apeleaza o functie JavaScript (goala) cu path-ul si id-ul repository-ului
+    //      Doar fisierele se pot sterge, nu si folderele
+    // 3. Sa se poata modifica numele fisierelor
+    //      In cazul unei modificari e nevoie si de reposiroy_id
+    // 4. La click pe un nod fisier (pe numele fisierului) sa inceapa downloadul acestuia
+    //      Sa aiba si URL-ul de download
+    //      sofy.local/repo/path-ul din tree
+
+    // Separat
+    //
+    // 1. Pe pagina de login de ex ar trebui o validare javascript
+    //      Prin care sa verifici ca fieldul de password si ala de confirm password sunt egale
+    // 2. Ar trebui o functie js care sa verifice ca adresa de email e valida
+
+    const icons = {
+        rootFolder: "fa icon-folder-open",
+        versionFolder: "fa icon-folder-open",
+        defaultFolder: "fa icon-folder-open",
+        file: "fa icon-file"
+    };
 
     let jsonRoots = {};
 
     jsonData.forEach(res => {
         jsonRoots[res.name] = jsonRoots[res.name] || {};
         jsonRoots[res.name][res.version] = jsonRoots[res.name][res.version] || [];
-        jsonRoots[res.name][res.version].push(res.resource);
+        jsonRoots[res.name][res.version].push(`${res.resource}###${res.repository_id}`);
     });
 
     let data = [];
@@ -18,6 +56,7 @@ function createJsonTree(jsonData, containerId) {
 
             let root = {
                 "text": osKey,
+                "icon": icons.rootFolder,
                 "children": []
             };
 
@@ -25,22 +64,29 @@ function createJsonTree(jsonData, containerId) {
                 .forEach(versionKey => {
                     let versionRoot = {
                         "text": versionKey,
+                        "icon": icons.versionFolder,
                         "children": []
                     };
 
                     os[versionKey]
                         .forEach(resource => {
-                            const split = resource.split('/');
+                            const res = resource.split('###')[0];
+                            const repositoryId = resource.split('###')[1];
 
-                            //console.log(split);
+                            const split = res.split('/');
+
                             let path = {
                                 "text": split[0],
+                                "icon": icons.defaultFolder,
                                 "children": [
                                     {
                                         "text": split[1],
+                                        "icon": icons.defaultFolder,
                                         "children": [
                                             {
-                                                "text": split[2]
+                                                "text": split[2],
+                                                "icon": icons.file,
+                                                "id": `${repositoryId}###file`
                                             }
                                         ]
                                     }
@@ -57,10 +103,36 @@ function createJsonTree(jsonData, containerId) {
             data.push(root);
         });
 
-    $(containerId).jstree({
-        'core': {
-            'data': data
+    $(containerId)
+    .on('delete_node.jstree', function(e, data) {
+        const node = data.node;
+        const nodeId = node.id;
+        const path = node.text;
+
+        if (nodeId.indexOf('###') !== -1) {
+            const repoId = node.id.split('###')[0];
+
+            deleteFile(repoId, path);
         }
+    })
+    .on('after_open.jstree', function() {
+        $(".jstree-anchor").unbind("dblclick").on("dblclick", function (event) {
+            const id = event.target.id;
+
+            if (id.indexOf('###') !== -1) {
+                const repositoryId = id.split('###')[0];
+                const path = event.target.text;
+
+                downloadFile(repositoryId, path);
+            }
+        });
+    })
+    .jstree({
+        'core': {
+            'data': data,
+            'check_callback': true
+        },
+        'plugins': ['contextmenu']
     });
 }
 
@@ -77,9 +149,7 @@ function getUserRepositories() {
             }
             createJsonTree(response, "#existent-repo");
             $.each(response, function (index, element) {
-                console.log(element);
                 $('#existent-repo');
-
             })
         },
         error: function (response) {
@@ -92,8 +162,8 @@ function getUserRepositories() {
         }
     });
 }
-getUserRepositories();
 
+getUserRepositories();
 
 $(function () {
     const json = [
