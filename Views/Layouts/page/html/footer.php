@@ -10,15 +10,15 @@
             <ul class="list">
                 <li><a href="/about/index">About Us</a></li>
                 <li><a href="/contact/index">Contact</a></li>
-                <li><a href="#">Terms &amp; Condition</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="/terms/index">Terms &amp; Condition</a></li>
+                <li><a href="/privacy/index">Privacy Policy</a></li>
             </ul>
         </div>
         <div class="col-md-3 footer-nav">
             <h4>Support</h4>
             <ul class="list">
-                <li><a href="#">Help</a></li>
-                <li><a href="user-guide.php">User Guide</a></li>
+                <li><a href="/help/index">Help</a></li>
+                <li><a href="/guide/user-guide">User Guide</a></li>
                 <li><a href="#">Forum</a></li>
             </ul>
         </div>
