@@ -114,7 +114,7 @@ class repositoriesController extends Controller
             return;
         }
         move_uploaded_file( $_FILES['file']['tmp_name'], $target_file);
-        $result = ['file_uploaded' => $params['repository_app'] . '/x86_64/Packages' .  basename($_FILES["file"]["name"])];
+        $result = ['file_uploaded' => $params['repository_app'] . '/x86_64/Packages/' .  basename($_FILES["file"]["name"])];
         echo json_encode($result);
     }
 
@@ -133,5 +133,15 @@ class repositoriesController extends Controller
         $this->userRepo->create($userId, $repoId, $params['repository_file'], 34, json_encode($parsedTags));
         $result = ['success' => true, 'message' => "Application repository successfully created"];
         echo json_encode($result);
+    }
+
+    public function searchResult($params)
+    {
+        if(isset($params['search_key']) && strlen(trim($params['search_key']))) {
+            $searchKey =  $params['search_key'];
+            $userId = $this->session->getCurrentUser();
+            $result = $this->userRepo->getSearchResults($userId, $searchKey);
+            echo json_encode($result);
+        }
     }
 }
