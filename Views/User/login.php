@@ -22,7 +22,7 @@
                 <input type="password" id="confirm-password" class="form-control" placeholder="Password" name="confirm-password"
                        minlength="8" required>
             </div>
-            <input type="submit" class="btn btn-md" value="Sign In">
+            <input type="submit" class="btn btn-md" value="Sign Up">
         </form>
     </div>
     <div class="col-sm-6">
@@ -37,7 +37,7 @@
                 <input type="password" id="password_login" class="form-control" placeholder="Password" name="password"
                        minlength="8" required>
             </div>
-            <input type="submit" class="btn btn-md" value="Sign Up">
+            <input type="submit" class="btn btn-md" value="Sign In">
         </form>
    </div>
 </div>
