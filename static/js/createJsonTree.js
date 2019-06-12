@@ -32,7 +32,7 @@ function createJsonTree(jsonData, containerId) {
                         .forEach(resource => {
                             const split = resource.split('/');
 
-                            console.log(split);
+                            //console.log(split);
                             let path = {
                                 "text": split[0],
                                 "children": [
