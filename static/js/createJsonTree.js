@@ -1,21 +1,23 @@
 function createJsonTree(jsonData, containerId) {
     // jsonData = [ { }, { } ]
     // containerId = "#container"
-    // 1. Adaugat iconite din font awesome (3.1.0) pentru noduri
-    //adaug o iconita de delte repositories
-    //sa permita si modificarea lor
-    //url de download ca poate l-a pierdut
-    //motivul pentru care returneaza acel api si repository_id pentru ca incazul unei modificari e nevoie si de reposiroy id
-    //tree-ul trebuie sa aiba posibilitatea de delete -> la delete e nevoie sa fie o iconita cu un x rosu acolo si sa apeleze o functie js cu path-ul fisierului si id-ul de repository
-    //atenie, doar fisierele se pot sterge, nu si folderele
-    //functia js sa fie goala ca o scriu eu
-    //la click pe un nod fisier sa fie posibilitatea de download
-    //practic trebuie ca js-ul sa extraga fisierul de la url-ul
-    //sofy.local/repo/path-ul din tree
-    //poate putem pune alte iconite
-    //pe pagina de login de ex ar trebui o validare javascript
-    //prin care sa verifici ca fieldul de password si ala de confirm password sunt egale
-    //ar trebui o functie js care sa verifice ca adresa de email e valida
+
+    // 1. Adaugat iconite din font awesome (3.1.0) pentru noduri (V)
+    // 2. Posibilitatea de delete a unui fisier.
+    //      Adaugat o iconita de delete repositories
+    //      La delete se apeleaza o functie JavaScript (goala) cu path-ul si id-ul repository-ului
+    //      Doar fisierele se pot sterge, nu si folderele
+    // 3. Sa se poata modifica numele fisierelor
+    //      In cazul unei modificari e nevoie si de reposiroy_id
+    // 4. La click pe un nod fisier (pe numele fisierului) sa inceapa downloadul acestuia
+    //      Sa aiba si URL-ul de download
+    //      sofy.local/repo/path-ul din tree
+
+    // Separat
+    //
+    // 1. Pe pagina de login de ex ar trebui o validare javascript
+    //      Prin care sa verifici ca fieldul de password si ala de confirm password sunt egale
+    // 2. Ar trebui o functie js care sa verifice ca adresa de email e valida
 
     const icons = {
         rootFolder: "fa icon-folder-open",
