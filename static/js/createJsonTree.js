@@ -8,6 +8,10 @@ function downloadFile(repoId, path) {
     link.click();
 }
 
+function deleteFile(repoId, path) {
+    console.log('Deleting', repoId, path);
+}
+
 function createJsonTree(jsonData, containerId) {
     // jsonData = [ { }, { } ]
     // containerId = "#container"
@@ -82,7 +86,7 @@ function createJsonTree(jsonData, containerId) {
                                             {
                                                 "text": split[2],
                                                 "icon": icons.file,
-                                                "id": repositoryId
+                                                "id": `${repositoryId}###file`
                                             }
                                         ]
                                     }
@@ -100,19 +104,35 @@ function createJsonTree(jsonData, containerId) {
         });
 
     $(containerId)
-    .on('changed.jstree', function (e, data) {
-        console.log(data);
-        var i, j, r = [];
-        const node = data.instance.get_node(data.selected[0]);
-        const repoId = node.id;
+    .on('delete_node.jstree', function(e, data) {
+        const node = data.node;
+        const nodeId = node.id;
         const path = node.text;
 
-        downloadFile(repoId, path);
+        if (nodeId.indexOf('###') !== -1) {
+            const repoId = node.id.split('###')[0];
+
+            deleteFile(repoId, path);
+        }
+    })
+    .on('after_open.jstree', function() {
+        $(".jstree-anchor").unbind("dblclick").on("dblclick", function (event) {
+            const id = event.target.id;
+
+            if (id.indexOf('###') !== -1) {
+                const repositoryId = id.split('###')[0];
+                const path = event.target.text;
+
+                downloadFile(repositoryId, path);
+            }
+        });
     })
     .jstree({
         'core': {
-            'data': data
-        }
+            'data': data,
+            'check_callback': true
+        },
+        'plugins': ['contextmenu']
     });
 }
 
