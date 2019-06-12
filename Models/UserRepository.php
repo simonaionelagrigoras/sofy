@@ -51,6 +51,25 @@ class UserRepository extends Model
         return $req->execute([$userId, $repositoryId]);
     }
 
+    public function getSearchResults($userId, $searchKey)
+    {
+        try{
+            $sql = "SELECT repository_id, repository.name as repository_name, repository.version, resource FROM user_repository " .
+                " LEFT JOIN  repository on repository.entity_id = user_repository.repository_id" .
+                " WHERE user_id='" . $userId ."'" .
+                " AND (resource like '%" . $searchKey . "%' OR tags like '%" . $searchKey . "%')";
+            $query = Database::getBdd()->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            if (empty($result)){
+                return ['error' => "No serach results found for key " . $searchKey];
+            }
+            return $result;
+        }catch (Exception $e){
+            return ['error' => "Could not get the app: " . $e->getMessage()];
+        }
+    }
+
     public function getUserRepositories($id)
     {
         $sql = "SELECT repository_id, repository.name, repository.version, user_repository.resource" .
