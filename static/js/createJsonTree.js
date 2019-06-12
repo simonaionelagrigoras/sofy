@@ -1,6 +1,21 @@
 function createJsonTree(jsonData, containerId) {
     // jsonData = [ { }, { } ]
     // containerId = "#container"
+    // 1. Adaugat iconite din font awesome (3.1.0) pentru noduri
+    //adaug o iconita de delte repositories
+    //sa permita si modificarea lor
+    //url de download ca poate l-a pierdut
+    //motivul pentru care returneaza acel api si repository_id pentru ca incazul unei modificari e nevoie si de reposiroy id
+    //tree-ul trebuie sa aiba posibilitatea de delete -> la delete e nevoie sa fie o iconita cu un x rosu acolo si sa apeleze o functie js cu path-ul fisierului si id-ul de repository
+    //atenie, doar fisierele se pot sterge, nu si folderele
+    //functia js sa fie goala ca o scriu eu
+    //la click pe un nod fisier sa fie posibilitatea de download
+    //practic trebuie ca js-ul sa extraga fisierul de la url-ul
+    //sofy.local/repo/path-ul din tree
+    //poate putem pune alte iconite
+    //pe pagina de login de ex ar trebui o validare javascript
+    //prin care sa verifici ca fieldul de password si ala de confirm password sunt egale
+    //ar trebui o functie js care sa verifice ca adresa de email e valida
 
     let jsonRoots = {};
 
