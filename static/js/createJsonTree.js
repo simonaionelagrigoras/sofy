@@ -63,9 +63,11 @@ function createJsonTree(jsonData, containerId) {
                                 "children": [
                                     {
                                         "text": split[1],
+                                        "icon": icons.defaultFolder,
                                         "children": [
                                             {
-                                                "text": split[2]
+                                                "text": split[2],
+                                                "icon": icons.file
                                             }
                                         ]
                                     }
