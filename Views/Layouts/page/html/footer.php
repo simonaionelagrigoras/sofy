@@ -19,7 +19,7 @@
             <ul class="list">
                 <li><a href="/help/index">Help</a></li>
                 <li><a href="/guide/index">User Guide</a></li>
-                <li><a href="#">Forum</a></li>
+                <li><a href="http://sofy.forumgratuit.ro/">Forum</a></li>
             </ul>
         </div>
         <div class="col-md-3 footer-ns">
