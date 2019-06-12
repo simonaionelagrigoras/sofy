@@ -58,7 +58,6 @@ function createJsonTree(jsonData, containerId) {
                         .forEach(resource => {
                             const split = resource.split('/');
 
-                            //console.log(split);
                             let path = {
                                 "text": split[0],
                                 "icon": icons.defaultFolder,
@@ -106,9 +105,7 @@ function getUserRepositories() {
             }
             createJsonTree(response, "#existent-repo");
             $.each(response, function (index, element) {
-                console.log(element);
                 $('#existent-repo');
-
             })
         },
         error: function (response) {
