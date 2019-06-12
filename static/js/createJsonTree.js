@@ -48,6 +48,7 @@ function createJsonTree(jsonData, containerId) {
                 .forEach(versionKey => {
                     let versionRoot = {
                         "text": versionKey,
+                        "icon": icons.versionFolder,
                         "children": []
                     };
 
