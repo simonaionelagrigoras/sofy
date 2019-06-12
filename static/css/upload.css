@@ -49,9 +49,84 @@ body>.loading-mask {
     filter: alpha(opacity=0);
 }
 
+#search{
+    display: inline-block;
+    margin-right: 3px;
+}
+#search-form{
+    float: right;
+    position:relative;
+}
+#search-form button {
+    position: absolute;
+    right: 1px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    width: 25px;
+    padding: 0;
+    outline: 0;
+    top: 6px;
+}
 
-#create-repo-btn, #show-repos{
-    padding: 6px 0px;
+#search-form button:before {
+    content: " ";
+    background-image: url(/static/media/images/search-icon.png);
+    background-repeat: no-repeat;
+    background-size: 23px 23px;
+    width: 23px;
+    height: 23px;
+    top: 0;
+    bottom: 0;
+    cursor: inherit;
+    display: inline-block;
+}
+#search-form button span{
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+#search-result .folder::after{
+    content: " ";
+    background-image: url(/static/media/images/opened-folder-icon.png);
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-size: 17px 17px;
+    width: 17px;
+    height: 17px;
+    top: 3px;
+    right: 2px;
+    cursor: inherit;
+    display: inline-block;
+    position: relative;
+}
+
+#search-result .folder:last-child::after{
+    background-image: none;
+}
+
+#search-result .filename::after{
+    content: " ";
+    background-image: url(/static/media/images/32px.png);
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    width: 23px;
+    height: 23px;
+    top: 0;
+    bottom: 0;
+    cursor: inherit;
+    display: inline-block;
+}
+#search-result .filename:last-child::after{
+    background-image:none;
+}
+.filename a[rel="nofollow"] { color: inherit; font-weight: bold}
+
+#create-repository, #show-repos{
+    padding: 6px 3px;
     width: 100%;
     text-align: left;
     background-color: #ccc;

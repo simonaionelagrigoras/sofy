@@ -473,9 +473,65 @@ $('document').ready(function(){
         }
     });
 
-    $(document).on('click', '#show-repos', function(){
+    $(document).on('click', '#list-repos', function(){
        $('.repo-list').toggle(300);
     });
 
+    $(document).on('focus', '#search', function(){
+        if(!$('.repo-list').is(":visible")){
+            $('.repo-list').toggle(300);
+        }
+    });
 
+    $('#search-form').on('submit', function(e) {
+        event.preventDefault();
+        var searchKey = $('input[name="search_key"]').val();
+        $.ajax({
+            url: '/repositories/searchResult/?search_key=' + searchKey,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                if (typeof response.error != 'undefined') {
+                    return [];
+                }
+
+                $.each(response, function (index, element) {
+                    var urlParts = [];
+                    var folder = '<span class="folder"></span><span class="filename">' + element.repository_name + '</span>';
+                    folder = folder + '<span class="folder"></span><span class="filename">' + element.version + '</span>';
+                    urlParts.push(element.repository_name);
+                    urlParts.push(element.version);
+                    var subfolders = element.resource.split('/');
+                    $.each(subfolders, function (i, subfolder) {
+                        urlParts.push(subfolder);
+
+                        if(i== subfolders.length-1){
+                            var hrefUrl ='';
+                            hrefUrl = 'http://' + location.hostname +"/repo/"+ urlParts.join('/')
+                            $(subfolderData).attr('href', hrefUrl);
+                            var subfolderData = '<span class="folder"></span><span class="filename"><a  rel="nofollow" href="' + hrefUrl + '">' + subfolder + '</a></span>';
+                        }else{
+                            var subfolderData = '<span class="folder"></span><span class="filename"><a>' + subfolder + '</a></span>';
+                        }
+                        folder = folder + subfolderData;
+
+
+                    });
+
+                    $('#search-result').append("<p>" + folder + "</p>");
+
+
+                });
+                //$('#search-result').toggle();
+                return response;
+            },
+            error: function (response) {
+                response = response.responseJSON;
+
+                if (typeof response.error != 'undefined') {
+                    return [];
+                }
+            }
+        })
+    });
 });
