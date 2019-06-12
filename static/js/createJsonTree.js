@@ -59,6 +59,7 @@ function createJsonTree(jsonData, containerId) {
                             //console.log(split);
                             let path = {
                                 "text": split[0],
+                                "icon": icons.defaultFolder,
                                 "children": [
                                     {
                                         "text": split[1],
