@@ -46,7 +46,7 @@ class UserRepository extends Model
 
     public function delete($userId, $repositoryId)
     {
-        $sql = 'DELETE FROM user_repository WHERE user_id = ? AND repository_id= ?';
+        $sql = 'DELETE FROM user_repository WHERE user_id = ? AND id= ?';
         $req = Database::getBdd()->prepare($sql);
         return $req->execute([$userId, $repositoryId]);
     }
@@ -54,7 +54,7 @@ class UserRepository extends Model
     public function getSearchResults($userId, $searchKey)
     {
         try{
-            $sql = "SELECT repository_id, repository.name as repository_name, repository.version, resource FROM user_repository " .
+            $sql = "SELECT id as repository_id, repository.name as repository_name, repository.version, resource FROM user_repository " .
                 " LEFT JOIN  repository on repository.entity_id = user_repository.repository_id" .
                 " WHERE user_id='" . $userId ."'" .
                 " AND (resource like '%" . $searchKey . "%' OR tags like '%" . $searchKey . "%')";
@@ -79,6 +79,19 @@ class UserRepository extends Model
         $query = Database::getBdd()->prepare($sql);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+
+    public function getUserRepositoryById($id)
+    {
+        $sql = "SELECT id, repository_id, repository.name, repository.version, user_repository.resource" .
+            " FROM `user_repository` " .
+            " LEFT JOIN  repository on repository.entity_id = user_repository.repository_id" .
+            " WHERE id=$id";
+        $query = Database::getBdd()->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
 }

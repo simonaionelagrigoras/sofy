@@ -15,7 +15,14 @@
             <div id="existent-repo"></div>
         </div>
 
-        <div id="search-result"></div>
+        <div id="search-result">
+            <p class="close">X</p>
+        </div>
+        <div class="loading-mask hidden" data-role="loader">
+            <div class="loader">
+                <img alt="Se incarca..." src="/static/media/images/loadloop.gif">
+            </div>
+        </div>
 
         <div class="create-repo">
             <div id="create-repository">

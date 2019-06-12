@@ -17,7 +17,7 @@ button, input, select, textarea {
     font: inherit;
 }
 .content{
-    min-height: 300px;
+    min-height: 400px;
     overflow: auto;
 }
 

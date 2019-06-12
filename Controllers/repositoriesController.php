@@ -14,6 +14,10 @@ class repositoriesController extends Controller
     public function __construct()
     {
         parent::__construct();
+        if(!$this->session->getCurrentUser()){
+            header('Location: /user/login');
+        }
+
         require(ROOT . 'Models/Repository.php');
         require(ROOT . 'Models/UserRepository.php');
         $this->repository = new Repository();
@@ -39,6 +43,8 @@ class repositoriesController extends Controller
         $versions = [];
         if(isset($params['repository_name'])){
             $versions = $this->repository->getVersions($params['repository_name']);
+        }else{
+
         }
 
         echo json_encode($versions);
@@ -126,11 +132,13 @@ class repositoriesController extends Controller
             echo json_encode(['error' => 'Invalid Repository'], JSON_PRETTY_PRINT);
             return;
         }
-
+        $repo     = $this->repository->getRepoById($repoId);
+        $repoFile =  ROOT . 'repo/' . $repo->repo_name . '/' . $repo->version . '/' .  $params['repository_file'];
+        $size     = filesize($repoFile) / (1024*1024); //filsize in MB
         $userId = $this->session->getCurrentUser();
         $tags = isset($params['repository_tags']) && strlen(trim($params['repository_tags'])) ? explode(',', trim($params['repository_tags'])) : null;
         $parsedTags = !is_null($tags) ? json_encode($tags) : null;
-        $this->userRepo->create($userId, $repoId, $params['repository_file'], 34, json_encode($parsedTags));
+        $this->userRepo->create($userId, $repoId, $params['repository_file'], $size, json_encode($parsedTags));
         $result = ['success' => true, 'message' => "Application repository successfully created"];
         echo json_encode($result);
     }
@@ -142,6 +150,52 @@ class repositoriesController extends Controller
             $userId = $this->session->getCurrentUser();
             $result = $this->userRepo->getSearchResults($userId, $searchKey);
             echo json_encode($result);
+        }else{
+            echo json_encode(['error' => 'Please enter a search key']);
         }
+
+    }
+
+
+    public function deleteRepository($params)
+    {
+        if(isset($params['repository_id'])) {
+            $userId = $this->session->getCurrentUser();
+            if(!$userId){
+                header('Location: /user/login');
+            }
+            $result = $this->userRepo->getUserRepositoryById($params['repository_id']);
+            if(!$result){
+                echo json_encode(['error' => 'Repository not found']);
+            }else{
+                $repoFile =  ROOT . 'repo/' . $result['name'] . '/' . $result['version'] . '/' .  $result['resource'];
+                if(file_exists($repoFile)){
+                    $deleted = $this->userRepo->delete($userId, $params['repository_id']);
+                    if($deleted){
+                        unlink($repoFile);
+                        echo json_encode(['success' => true, 'message' => "Repo deleted"]);
+                    }
+                    else {
+                        echo json_encode(['success' => false, 'message' => "An error occurred"]);
+                    }
+                }else{
+                    echo json_encode(['success' => false, 'message' => "Repo file doesn't exist"]);
+                }
+            }
+            
+        }
+    }
+
+    public function getRepoById($params)
+    {
+        if(isset($params['repository_id'])) {
+            $repoId =  $params['repository_id'];
+        }else{
+            echo json_encode(['error' => 'Invalid Repository'], JSON_PRETTY_PRINT);
+            return;
+        }
+        $result = $this->repository->getRepoById($repoId);
+        $repoFile =  ROOT . 'repo/' . $result->repo_name . '/' . $result->version . '/' ;
+        echo json_encode($repoFile);
     }
 }

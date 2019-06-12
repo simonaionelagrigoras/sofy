@@ -8,6 +8,14 @@
 
 class accountController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        if(!$this->session->getCurrentUser()){
+            header('Location: /user/login');
+        }
+    }
+
     function index()
     {
         $this->render("index");
