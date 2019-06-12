@@ -18,7 +18,7 @@
             <h4>Support</h4>
             <ul class="list">
                 <li><a href="/help/index">Help</a></li>
-                <li><a href="/guide/user-guide">User Guide</a></li>
+                <li><a href="/guide/index">User Guide</a></li>
                 <li><a href="#">Forum</a></li>
             </ul>
         </div>
