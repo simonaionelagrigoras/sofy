@@ -24,7 +24,7 @@ class Router
             $explode_url = explode('/', $url);
             $explode_url = array_slice($explode_url, 1);
             $request->controller = $explode_url[0];
-            $request->action = $explode_url[1];
+            $request->action = isset($explode_url[1]) && !empty($explode_url[1]) ? $explode_url[1] : 'index';
 
             //parse parameters
             $parts = parse_url($url);

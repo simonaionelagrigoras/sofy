@@ -21,7 +21,7 @@
                     <li class="option <?= $containerClass == 'about-us' ? 'selected' : '' ?>"><a href="/about/index">About us</a></li>
                     <li class="option <?= $containerClass == 'contact'  ? 'selected' : '' ?>"><a href="/contact/index">Contact</a></li>
                     <li class="dropdown" style="float:right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            data-aria-expanded="false"><span class="carety" id="user-account"></span></a>
                         <ul class="dropdown-menu">
                             <?php if (!$isLoggedIn):?>

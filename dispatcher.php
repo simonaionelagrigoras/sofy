@@ -19,11 +19,13 @@ class Dispatcher
 
             $controller = $this->loadController();
 
-            if(!method_exists($controller, $this->request->action)) {
-                throw new Exception("Method does not exist " . get_class($controller) . '::' . $this->request->action);
+            $action = is_null($this->request->action) ? 'index' : $this->request->action;
+            if(!method_exists($controller, $action)) {
+                call_user_func_array([$controller, 'notFound'],[]);
+                //throw new Exception("Method does not exist " . get_class($controller) . '::' . $this->request->action);
             }
             $params = [$this->request->params];
-            call_user_func_array([$controller, $this->request->action], $params);
+            call_user_func_array([$controller, $action], $params);
         }catch (Exception $e){
             return $e->getMessage();
         }
@@ -34,6 +36,10 @@ class Dispatcher
     {
         $name = $this->request->controller . "Controller";
         $file = ROOT . 'Controllers/' . $name . '.php';
+        if(!file_exists($file)){
+            $file =  ROOT . 'Core/Controller.php';
+            $name = 'Controller';
+        }
         require($file);
         $controller = new $name();
         return $controller;

@@ -43,12 +43,59 @@ button, input, select, textarea {
 .hidden{
     display: none;
 }
-.container {
+
+.error{
+    color: #e02b27;
+    font-size: 12px;
+}
+.container, .response-message {
     margin-right: auto;
     margin-left: auto;
     background-color: #ffffff;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
+}
+.response-message{
+    padding-left: 36px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+}
+.response-message.success{
+    background-color: #4ccd8a;
+}
+.response-message.error{
+    background-color: #e53e4f;
+}
+.response-message.success:before {
+    content: "\2713";
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+    line-height: 20px;
+    margin-right: 10px;
+    color:  #4ccd8a;
+}
+.response-message.error:before {
+    content: "\0021";
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+    line-height: 20px;
+    margin-right: 10px;
+    color: #e53e4f;
+}
+hr.account-settings-separator{
+    margin: 20px 0px;
 }
 .contact-container{
     padding: 20px;
@@ -335,7 +382,7 @@ a {
     padding: 60px 40px;
     color: rgba(255,255,255,1.00);
     margin-bottom: 20px;
-    margin-top: 20%;
+    margin-top: 30px;
     border-bottom-right-radius: 6px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 6px;
@@ -426,10 +473,7 @@ label {
     font-size: 15px;
     margin: 0 0 0 5px;
 }
-.error{
-    color: #e02b27;
-    font-size: 12px;
-}
+
 .glyphicon-envelope:before {
     content: "\2709";
 }
@@ -504,7 +548,7 @@ label {
 }
 /*** END contact us page ***/
 @media (min-width: 1200px) {
-    .container {
+    .container, .response-message {
         width: 1170px;
     }
 }

@@ -17,6 +17,16 @@
 </head>
 <body>
 <?php require_once('page\html\header.php') ?>
+<?php if(isset($_SESSION['success_message']) && strlen(trim($_SESSION['success_message']))):?>
+    <div class="response-message success"><?= trim($_SESSION['success_message'])?></div>
+    <?php unset($_SESSION['success_message'])?>
+<?php endif?>
+<?php if(isset($_SESSION['error_message']) && strlen(trim($_SESSION['error_message']))):?>
+    <div class="response-message error"><?= trim($_SESSION['error_message']) ?></div>
+    <?php unset($_SESSION['error_message'])?>
+<?php endif?>
+
+
 <div class="container <?= $containerClass ?>">
     <div class="content">
         <?php echo $content_for_layout ?>
