@@ -1,3 +1,13 @@
+function downloadFile(repoId, path) {
+    const url = `http://sofy.local/${repoId}/${path}`;
+    let link = document.createElement('a');
+
+    document.body.appendChild(link);
+
+    link.href = url;
+    link.click();
+}
+
 function createJsonTree(jsonData, containerId) {
     // jsonData = [ { }, { } ]
     // containerId = "#container"
@@ -31,7 +41,7 @@ function createJsonTree(jsonData, containerId) {
     jsonData.forEach(res => {
         jsonRoots[res.name] = jsonRoots[res.name] || {};
         jsonRoots[res.name][res.version] = jsonRoots[res.name][res.version] || [];
-        jsonRoots[res.name][res.version].push(res.resource);
+        jsonRoots[res.name][res.version].push(`${res.resource}###${res.repository_id}`);
     });
 
     let data = [];
@@ -56,7 +66,10 @@ function createJsonTree(jsonData, containerId) {
 
                     os[versionKey]
                         .forEach(resource => {
-                            const split = resource.split('/');
+                            const res = resource.split('###')[0];
+                            const repositoryId = resource.split('###')[1];
+
+                            const split = res.split('/');
 
                             let path = {
                                 "text": split[0],
@@ -68,7 +81,8 @@ function createJsonTree(jsonData, containerId) {
                                         "children": [
                                             {
                                                 "text": split[2],
-                                                "icon": icons.file
+                                                "icon": icons.file,
+                                                "id": repositoryId
                                             }
                                         ]
                                     }
@@ -85,7 +99,17 @@ function createJsonTree(jsonData, containerId) {
             data.push(root);
         });
 
-    $(containerId).jstree({
+    $(containerId)
+    .on('changed.jstree', function (e, data) {
+        console.log(data);
+        var i, j, r = [];
+        const node = data.instance.get_node(data.selected[0]);
+        const repoId = node.id;
+        const path = node.text;
+
+        downloadFile(repoId, path);
+    })
+    .jstree({
         'core': {
             'data': data
         }
@@ -118,8 +142,8 @@ function getUserRepositories() {
         }
     });
 }
-getUserRepositories();
 
+getUserRepositories();
 
 $(function () {
     const json = [
