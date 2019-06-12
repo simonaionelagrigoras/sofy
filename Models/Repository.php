@@ -61,4 +61,13 @@ class Repository extends Model
         return $result->entity_id;
     }
 
+    public function getRepoById($id)
+    {
+        $sql = "SELECT name as repo_name, version FROM `repository` WHERE entity_id = '" . $id . "'";
+        $query = Database::getBdd()->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
 }

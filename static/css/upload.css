@@ -88,7 +88,16 @@ body>.loading-mask {
     position: absolute;
     width: 1px;
 }
-
+#search-result{
+    padding-left: 10px;
+}
+#search-result p.close{
+    text-align: right;
+    margin-right: 30px;
+    font-weight: bold;
+    display: none;
+    cursor: pointer;
+}
 #search-result .folder::after{
     content: " ";
     background-image: url(/static/media/images/opened-folder-icon.png);
@@ -123,14 +132,35 @@ body>.loading-mask {
 #search-result .filename:last-child::after{
     background-image:none;
 }
+
+#search-result .filename .delete::before{
+    content: "X";
+    font-weight: bolder;
+    font-size: 10px;
+    background-color: red;
+    width: 13px;
+    height: 13px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    line-height: 13px;
+    color: #fff;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
 .filename a[rel="nofollow"] { color: inherit; font-weight: bold}
 
 #create-repository, #show-repos{
     padding: 6px 3px;
     width: 100%;
     text-align: left;
-    background-color: #ccc;
+    background-color: #e2e2e2;
     margin:2px 0px;
+}
+#list-repos{
+    width: 60%;
+    text-align: left;
 }
 #create-repo-btn:before {
     content: "";

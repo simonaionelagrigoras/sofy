@@ -1,5 +1,17 @@
 $('document').ready(function(){
 
+    var $loading = $('.loading-mask').hide();
+    //Attach the event handler to any element
+    $(document)
+        .ajaxStart(function () {
+            //ajax request went so show the loading image
+            $loading.show();
+        })
+        .ajaxComplete(function () {
+            //got response so hide the loading image
+            $loading.hide();
+        });
+
     function makeRequest(url, step, data){
         var reqType = typeof data != 'undefined' ? 'POST' : 'GET';
         $.ajax({
@@ -418,20 +430,6 @@ $('document').ready(function(){
         step1.classList.remove("active");
     }
 
-    var $loading = $('.loading-mask').hide();
-    //Attach the event handler to any element
-    $(document)
-        .ajaxStart(function () {
-            //ajax request went so show the loading image
-            $loading.show();
-        })
-        .ajaxComplete(function () {
-            //got response so hide the loading image
-            $loading.hide();
-        });
-
-
-
     $('body').on('click','p.folder>a', function(e){
         e.preventDefault();
         var folder = e.target.getAttribute('href');
@@ -474,17 +472,35 @@ $('document').ready(function(){
     });
 
     $(document).on('click', '#list-repos', function(){
-       $('.repo-list').toggle(300);
-    });
-
-    $(document).on('focus', '#search', function(){
-        if(!$('.repo-list').is(":visible")){
+        if(!$('#search-result p.result').length){
             $('.repo-list').toggle(300);
         }
     });
 
+    $(document).on('focus', '#search', function(){
+        if(!$('.repo-list').is(":visible") && !$('#search-result p.result').length){
+            $('.repo-list').toggle(300);
+        }
+    });
+
+    $(document).on('click', '#search-result p.close', function(){
+        if(!$('.repo-list').is(":visible")){
+            $('.repo-list').toggle(300);
+        }
+        $('#search-result p.result').remove();
+        $('#search-result p.close').hide();
+    });
+
     $('#search-form').on('submit', function(e) {
         event.preventDefault();
+        if( $('#search-result p.result').length){
+            $('#search-result p.result').remove();
+        }
+
+        if($('.repo-list').is(":visible")){
+            $('.repo-list').toggle();
+        }
+
         var searchKey = $('input[name="search_key"]').val();
         $.ajax({
             url: '/repositories/searchResult/?search_key=' + searchKey,
@@ -501,15 +517,16 @@ $('document').ready(function(){
                     folder = folder + '<span class="folder"></span><span class="filename">' + element.version + '</span>';
                     urlParts.push(element.repository_name);
                     urlParts.push(element.version);
+                    var repoId = element.repository_id;
                     var subfolders = element.resource.split('/');
                     $.each(subfolders, function (i, subfolder) {
                         urlParts.push(subfolder);
 
                         if(i== subfolders.length-1){
-                            var hrefUrl ='';
-                            hrefUrl = 'http://' + location.hostname +"/repo/"+ urlParts.join('/')
+                            var hrefUrl = 'http://' + location.hostname +"/repo/"+ urlParts.join('/')
                             $(subfolderData).attr('href', hrefUrl);
-                            var subfolderData = '<span class="folder"></span><span class="filename"><a  rel="nofollow" href="' + hrefUrl + '">' + subfolder + '</a></span>';
+                            var subfolderData = '<span class="folder"></span><span class="filename"><a  rel="nofollow" href="' + hrefUrl + '">'
+                                + subfolder + '</a><a class="delete" data-id="' + repoId + '"></a></span>';
                         }else{
                             var subfolderData = '<span class="folder"></span><span class="filename"><a>' + subfolder + '</a></span>';
                         }
@@ -518,20 +535,58 @@ $('document').ready(function(){
 
                     });
 
-                    $('#search-result').append("<p>" + folder + "</p>");
-
+                    $('#search-result').append("<p class='result' id='repo-" + repoId + "'>" + folder + "</p>");
 
                 });
+                if(!$('#search-result .close').is(":visible")){
+                    $('#search-result .close').toggle();
+                }
+
                 //$('#search-result').toggle();
                 return response;
             },
             error: function (response) {
                 response = response.responseJSON;
 
-                if (typeof response.error != 'undefined') {
+                if(typeof response == 'undefined'){
+
+                }
+                if(typeof response.error != 'undefined') {
                     return [];
                 }
             }
         })
     });
+
+    $(document).on('click', '.filename .delete', function(ev){
+        if (confirm('Are you sure you want to delete this repository?')) {
+            var repoId = $(ev.target).attr('data-id');
+            $.ajax({
+                url: '/repositories/deleteRepository/repository_id/' + repoId,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    if (typeof response == 'undefined') {
+                        return [];
+                    }
+                    if(response.success){
+                        $('p#repo-' + repoId).remove();
+                    }
+                },
+                error: function (response) {
+                    response = response.responseJSON;
+
+                    if(typeof response == 'undefined'){
+
+                    }
+                    if(typeof response.error != 'undefined') {
+                        return [];
+                    }
+                }
+            })
+        }
+    });
+
+
 });
