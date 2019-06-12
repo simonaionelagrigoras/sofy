@@ -40,6 +40,7 @@ function createJsonTree(jsonData, containerId) {
 
             let root = {
                 "text": osKey,
+                "icon": icons.rootFolder,
                 "children": []
             };
 
