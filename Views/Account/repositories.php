@@ -4,14 +4,24 @@
 <div class="col-sm-9">
     <div class="repo-upload">
 
-        <a id="show-repos" class="btn btn-md">Your repositories</a>
+        <div id="show-repos">
+            <a id="list-repos" class="btn btn-md">Your repositories</a>
+            <form method="GET" action="/repositories/searchResult" id="search-form" autocomplete="off">
+                <input type="text" name="search_key" id="search" required="required" placeholder="Search by tag or name" class="form-control">
+                <button type="submit" class="form-submit"><span>Submit</span></button>
+            </form>
+        </div>
         <div class="repo-list">
-            <div id="existent-repo">
+            <div id="existent-repo"></div>
         </div>
 
-        </div>
+        <div id="search-result"></div>
+
         <div class="create-repo">
-            <a id="create-repo-btn" class="btn btn-md">Create repository</a>
+            <div id="create-repository">
+                <a id="create-repo-btn" class="btn btn-md">Create repository</a>
+            </div>
+
             <div class="create-repo-container hidden">
             <div class="progress visible">
                 <div class="progress-track"></div>
