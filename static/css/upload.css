@@ -172,9 +172,12 @@ body>.loading-mask {
     top: 5px;
     right: 5px;
     position: relative;
-    display: inline-block;
+    display: none;
 }
-
+#create-repo-btn, #list-repos{
+    font-weight: bold;
+    text-transform: capitalize;
+}
 .repo-step{
     display: none;
 }
@@ -212,6 +215,7 @@ span.tooltip {
 }
 .repo-list{
     display: none;
+    overflow: auto;
 }
 input[type=radio]:checked::after {
     content: '';

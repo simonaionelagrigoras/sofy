@@ -8,6 +8,6 @@
             <img src="<?= $baseUrl ?>/static/media/images/profile.jpg" width="100">
         </div>
         <p><strong>Repositories updates:</strong> 3</p>
-        <p><strong>Content size:</strong> 464 KB</p>
+        <p><strong>Content size:</strong> <?=$_SESSION['total_size']?> MB</p>
     </div>
 </div>

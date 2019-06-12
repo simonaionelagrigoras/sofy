@@ -11,7 +11,36 @@ function downloadFile(repoId, path) {
 function deleteFile(repoId, path) {
     console.log('Deleting', repoId, path);
 }
+function deleteFile(repoId, file)
+{
+    if (confirm('Are you sure you want to delete this repository?')) {
+        $.ajax({
+            url: '/repositories/deleteRepository/repository_id/' + repoId,
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                if (typeof response == 'undefined' || response.error) {
+                    alert("An error occurred")
+                }
+                if (response.success) {
+                    $('p#repo-' + repoId).remove();
+                    alert("Repository deleted")
+                }
+            },
+            error: function (response) {
+                response = response.responseJSON;
 
+                if (typeof response == 'undefined') {
+
+                }
+                if (typeof response.error != 'undefined') {
+                    return [];
+                }
+            }
+        });
+    }
+}
 function createJsonTree(jsonData, containerId) {
     // jsonData = [ { }, { } ]
     // containerId = "#container"
@@ -85,8 +114,14 @@ function createJsonTree(jsonData, containerId) {
                                         "children": [
                                             {
                                                 "text": split[2],
-                                                "icon": icons.file,
-                                                "id": `${repositoryId}###file`
+                                                "id": icons.defaultFolder,
+                                                "children": [
+                                                    {
+                                                        "text": split[3],
+                                                        "icon": icons.file,
+                                                        "id": `${repositoryId}###file`
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }

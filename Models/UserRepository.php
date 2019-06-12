@@ -72,7 +72,7 @@ class UserRepository extends Model
 
     public function getUserRepositories($id)
     {
-        $sql = "SELECT repository_id, repository.name, repository.version, user_repository.resource" .
+        $sql = "SELECT id as repository_id, repository.name, repository.version, user_repository.resource" .
             " FROM `user_repository` " .
             " LEFT JOIN  repository on repository.entity_id = user_repository.repository_id" .
             " WHERE user_id=$id";
@@ -93,5 +93,16 @@ class UserRepository extends Model
         $query->execute();
         $result = $query->fetch(PDO::FETCH_ASSOC);
         return $result;
+    }
+
+    public function getTotalSizeForUSer($id)
+    {
+        $sql = "SELECT sum(size) as total_size" .
+            " FROM `user_repository` " .
+            " WHERE user_id=$id";
+        $query = Database::getBdd()->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result ? $result->total_size : 0;
     }
 }

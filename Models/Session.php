@@ -66,4 +66,10 @@ class Session{
         $_SESSION['error_message'] = $message;
         return $this;
     }
+
+    public function setTotalSize($size)
+    {
+        $_SESSION['total_size'] = $size;
+        return $this;
+    }
 }

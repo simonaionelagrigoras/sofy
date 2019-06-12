@@ -42,6 +42,12 @@ class Router
                     $request->params[$key] = $value;
                 }
             }
+            if(!empty($request->params)){
+                foreach ($request->params as $key => $value){
+                    $request->params[$key] = $value;
+                }
+            }
+
         }
 
     }
