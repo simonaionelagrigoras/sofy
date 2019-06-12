@@ -17,6 +17,13 @@ function createJsonTree(jsonData, containerId) {
     //prin care sa verifici ca fieldul de password si ala de confirm password sunt egale
     //ar trebui o functie js care sa verifice ca adresa de email e valida
 
+    const icons = {
+        rootFolder: "fa icon-folder-open",
+        versionFolder: "fa icon-folder-open",
+        defaultFolder: "fa icon-folder-open",
+        file: "fa icon-file"
+    };
+
     let jsonRoots = {};
 
     jsonData.forEach(res => {
