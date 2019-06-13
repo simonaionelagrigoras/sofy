@@ -1,0 +1,12 @@
+.app-list-item{
+    width: 100px;
+}
+.repositories-list-data{
+    font-size: 14px;
+}
+.container.repositories{
+    padding: 10px 20px;
+}
+.repo-edit{
+    width: 60%;
+}

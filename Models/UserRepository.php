@@ -8,9 +8,10 @@
 
 class UserRepository extends Model
 {
-    public function create($userId, $repositoryId, $resource, $size, $tags)
+    public function create($userId, $repositoryId, $resource, $size, $tags, $description, $version, $officialSite)
     {
-        $sql = "INSERT INTO user_repository (`user_id`, `repository_id`, `resource`, `size`, `tags` ,`created_at`, `updated_at`) VALUES (?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO user_repository (`user_id`, `repository_id`, `resource`, `size`, `tags`, `description`, `version`, `official_site` ,`created_at`, `updated_at`) " .
+            "VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         $query = Database::getBdd()->prepare($sql);
 
@@ -21,27 +22,51 @@ class UserRepository extends Model
                 $resource,
                 $size,
                 $tags,
+                $description,
+                $version,
+                $officialSite,
                 date('Y-m-d H:i:s'),
                 date('Y-m-d H:i:s')
             ]);
     }
 
-    public function update($userId, $repositoryId, $resource, $size, $tags)
+    public function getAll($userId)
     {
-        $sql = "UPDATE user_repository SET resource = :resource, size = :size , tags = :tags, updated_at = :updated_at ".
-            "WHERE user_id = :user_id AND repository_id = :repository_id";
+        $sql = "SELECT id, repository_id, repository.name, repository.version as version, user_repository.resource, size, tags, description, " .
+            " user_repository.version as user_repo_version, official_site, user_repository.created_at as created_at, user_repository.updated_at as updated_at" .
+            " FROM `user_repository` " .
+            " LEFT JOIN  repository on repository.entity_id = user_repository.repository_id" .
+            " WHERE user_id=$userId";
+        $query = Database::getBdd()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function update($repositoryId, $resource, $size, $tags, $description, $version, $officialSite)
+    {
+        $sql = "UPDATE user_repository SET ";
+        if(!is_null($resource)){
+            $sql = $sql . "resource = :resource, size = :size ,";
+        }
+        $sql = $sql . "  tags = :tags, description = :description, version = :version, official_site = :official_site,  updated_at = :updated_at ".
+            "WHERE id = :repository_id";
 
         $req = Database::getBdd()->prepare($sql);
-
-        return $req->execute([
-            'user_id' => $userId,
+        $data = [
             'repository_id' => $repositoryId,
-            'resource' => $resource,
-            'size' => $size,
             'tags' => $tags,
+            'description' => $description,
+            'version' => $version,
+            'official_site' => $officialSite,
             'updated_at' => date('Y-m-d H:i:s')
 
-        ]);
+        ];
+        if(!is_null($resource)){
+            $data['resource'] = $resource;
+            $data['size'] = $size;
+        }
+        return $req->execute($data);
     }
 
     public function delete($userId, $repositoryId)
@@ -104,5 +129,17 @@ class UserRepository extends Model
         $query->execute();
         $result = $query->fetch(PDO::FETCH_OBJ);
         return $result ? $result->total_size : 0;
+    }
+
+    public function getUserRepoDataById($id)
+    {
+        $sql = "SELECT id, repository_id, repository.name, repository.version as repo_version, user_repository.resource, tags, description,user_repository.version as version, official_site " .
+            " FROM `user_repository` " .
+            " LEFT JOIN  repository on repository.entity_id = user_repository.repository_id" .
+            " WHERE id=$id";
+        $query = Database::getBdd()->prepare($sql);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

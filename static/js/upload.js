@@ -236,8 +236,11 @@ $('document').ready(function(){
             case 5:
                 var file   =  $("input[name='file_for_repo']").val();
                 var repoId = $("#repository_id").val();
-                var repoTags = $("input[name='repository_tags']").val();
-                var postData = {'repository_id': repoId, 'repository_file': file, 'repository_tags': repoTags};
+                var repoTags    = $("input[name='repository_tags']").val();
+                var description = $("input[name='description']").val();
+                var version     = $("input[name='version']").val();
+                var officialSite = $("input[name='official_site']").val();
+                var postData = {'repository_id': repoId, 'repository_file': file, 'repository_tags': repoTags, 'description': description, 'version': version, 'official_site':officialSite};
                 makeRequest('/repositories/createRepo', 'step5', postData);
                 break;
             default:

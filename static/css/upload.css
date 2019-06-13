@@ -14,9 +14,6 @@ body>.loading-mask {
 .loading-mask .loader>img {
     width: 100px;
 }
-.repo-list{
-    height: 200px;
-}
 
 .fileUpload.btn.btn-primary {
     color: #333;
@@ -215,7 +212,14 @@ span.tooltip {
 }
 .repo-list{
     display: none;
+    height: 250px;
+}
+#view-all{
+    margin-top: 10px;
+}
+#existent-repo{
     overflow: auto;
+    height: 200px;
 }
 input[type=radio]:checked::after {
     content: '';
@@ -268,7 +272,7 @@ input[type=radio] {
 .available-versions > p:first-child {
     margin: 0;
 }
-
+.add-tags lable{}
 span.upload-text:before{
     content: "";
     width: 22px;
@@ -292,6 +296,10 @@ span.upload-text:before{
 }
 #steps p{
     line-height: 1em;
+}
+
+#steps label{
+    width: 150px;
 }
 .progress.hidden {
     position: relative;
