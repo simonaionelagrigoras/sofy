@@ -13,11 +13,14 @@
         </div>
         <div class="repo-list">
             <div id="existent-repo"></div>
+            <input type="submit" class="btn btn-md" id="view-all" value="View all repositories data"
+                   onclick="window.location='/repositories/listAll';" />
         </div>
 
         <div id="search-result">
             <p class="close">X</p>
         </div>
+
         <div class="loading-mask hidden" data-role="loader">
             <div class="loader">
                 <img alt="Se incarca..." src="/static/media/images/loadloop.gif">
@@ -82,8 +85,23 @@
 
                 <div class="add-tags repo-step step-5">
                     <p class="uploaded_file"></p>
-                    <p>Please set the tags for your repository separated by comma (,)</p>
+                        <div class="fieldset">
+                        <label>Description</label>
+                            <input type="text" name="description" />
+                    </div>
+
+                    <div class="fieldset required">
+                    <label>Version</label>
+                    <input type="text" name="version" />
+                    </div>
+                    <div class="fieldset">
+                    <label>Official Site</label>
+                    <input type="text" name="official_site" />
+                    </div>
+                    <div class="fieldset">
+                    <label>Tags (separated by ,)</label>
                     <input type="text" name="repository_tags" />
+                    </div>
                 </div>
 
                 <input type="hidden" name="file_for_repo" />
